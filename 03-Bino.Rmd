@@ -1,2 +1,15 @@
 # Application 1: Binomial Mixture Model
 
+
+
+
+
+
+## References: 
+
+1. [Expectation Maximization (EM) Algorithm - colorado.edu](https://www.colorado.edu/amath/sites/default/files/attached-files/em_algorithm.pdf) 
+
+2. [Youtube: Expectation Maximization - 2 - Example: Binomial Mixture Model](https://www.youtube.com/watch?v=J24CifymPbo&t=512s)
+
+
+

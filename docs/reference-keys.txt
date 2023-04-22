@@ -3,6 +3,8 @@ introduction-to-em
 introduction
 em-algorithm-given-condition-limitation
 em-steps-5-step-version
-application-1-binomial-mixture-model
-application-2-gaussian-mixture-model
 em-steps-2-key-step-version
+reference
+application-1-binomial-mixture-model
+references
+application-2-gaussian-mixture-model

@@ -1,51 +1,30 @@
 p.caption {
-  color: #777;
-  margin-top: 10px;
+    color: #777;
+    margin-top: 10px;
 }
 p code {
-  white-space: inherit;
+    white-space: inherit;
 }
 pre {
-  word-break: normal;
-  word-wrap: normal;
+    word-break: normal;
+    word-wrap: normal;
 }
 pre code {
-  white-space: inherit;
+    white-space: inherit;
 }
 
-baseurl = "/"
-relativeurls = false
-languageCode = "en-us"
-title = "A Hugo website"
-theme = "hugo-lithium"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown", "_files$", "_cache$"]
+.header-section-number {
+    padding-right: .2em;
+    font-weight: 500;
+}
+.level1 .header-section-number {
+    display: inline-block;
+    border-bottom: 3px solid;
+}
+.level1 h1 {
+    border-bottom: 1px solid;
+}
 
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
-
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/rstudio/blogdown"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/rstudio"
-
-[params]
-    description = "A website built through Hugo and blogdown."
-
-    highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
-
-    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    MathJaxVersion = "2.7.5"
-
-[params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+.header-section-number:after {
+    content: ": ";
+}

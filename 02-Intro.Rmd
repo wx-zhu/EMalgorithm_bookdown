@@ -1,6 +1,9 @@
-# Introduction to EM
+# Introduction to EM 
+
+
 
 ## Introduction
+
 *Given condition:*   
 
 > We have observed variables $X$, but we believe (assume) that there are some “latent” variables $Z$ that we cannot observe. 
@@ -17,16 +20,17 @@ However, for some problems, it is hard to solve the above equation.
 
 
 ## EM Algorithm Given Condition & Limitation
+
 **Given condition:**    
 
-1. We have observed variables $X$, but we believe (assume) that there are some “latent” variables $Z$ that we cannot observe.  
+1. We have observed variables $X$, but we believe (assume) that there are some “*latent” variables *$Z$ that we cannot observe.  
 
 2. Assume some parameterized distribution for the latent variables $Z$ or $p(Z\mid X, \theta)$ 
 
   
 **Limitation:** 
 
-1. EM estimate is only guaranteed to never get worse, but won’t necessarily find the global optimum of the likelihood
+1. EM estimate is only guaranteed to never get worse, but *won’t* necessarily find the global optimum of the likelihood
 
 2. In practice, start EM from multiple initial guesses and choose the one with the largest likelihood as the final guess for $\theta$
 
@@ -39,7 +43,7 @@ EM algorithm is usually described as two steps (the E-step and the M-step), but 
 
 2. Given the observed variable $X$, calculate the conditional distribution of the observed variable $X$ and latent variable $Z$: $p(X, Z \mid \theta^{t})$ 
 
-3. Find the \textbf{Q-function}, which is the expected $\log {p(X,Z\mid \theta)}$ by using the conditional distribution of latent variable $Z$ from the last step 
+3. Find the **Q-function**, which is the expected $\log {p(X,Z\mid \theta)}$ by using the conditional distribution of latent variable $Z$ from the last step 
    \[
    \begin{align}
         Q(\theta \mid \theta^t) & = expected\; \log {p(X,Z\mid \theta)} \\ 
@@ -65,6 +69,17 @@ We also include the E-step and M-step version of EM algorithm below for referenc
 3. M step (finding the new guess for $\theta$ by maximizing the Q-function): $\theta^{t+1} = \underset{\theta}{\operatorname{argmax}} \: Q(\theta \mid \theta^t)$
 
 4. Repeat until $|\theta^{t+1} - \theta^m| < \epsilon$
+
+
+## References: 
+
+1. [EM Demystified: An Expectation-Maximization Tutorial](https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf)
+
+2. [Youtube: Expectation Maximization - 1 - Theory](https://www.youtube.com/watch?v=2b47biOYSEI)
+
+
+
+
 
 
 
