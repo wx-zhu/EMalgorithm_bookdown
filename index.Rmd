@@ -1,6 +1,7 @@
 --- 
 title: "EM Algorithm"
-author: "YOUR NAME HERE"
+subtitle: "MATH/STAT 455"
+author: "Sarah Tannert Lerner, Wenxuan Zhu, Jingyi Guan "
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
