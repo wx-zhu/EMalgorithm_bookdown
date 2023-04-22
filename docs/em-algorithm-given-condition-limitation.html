@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 EM Algorithm Given Condition &amp; Limitation | EM Algorithm</title>
+  <meta name="description" content="2.2 EM Algorithm Given Condition &amp; Limitation | EM Algorithm" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 EM Algorithm Given Condition &amp; Limitation | EM Algorithm" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 EM Algorithm Given Condition &amp; Limitation | EM Algorithm" />
+  
+  
+  
+
+<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan" />
+
+
+<meta name="date" content="2023-04-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="em-steps-5-step-version.html"/>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="bootstrap.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHORT TITLE HERE</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>2</b> Introduction to EM</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="em-algorithm-given-condition-limitation.html"><a href="em-algorithm-given-condition-limitation.html"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
+<li class="chapter" data-level="2.3" data-path="em-steps-5-step-version.html"><a href="em-steps-5-step-version.html"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Application 1: Binomial Mixture Model</a></li>
+<li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EM Algorithm</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="em-algorithm-given-condition-limitation" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> EM Algorithm Given Condition &amp; Limitation<a href="em-algorithm-given-condition-limitation.html#em-algorithm-given-condition-limitation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Given condition:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>We have observed variables <span class="math inline">\(X\)</span>, but we believe (assume) that there are some “latent” variables <span class="math inline">\(Z\)</span> that we cannot observe.</p></li>
+<li><p>Assume some parameterized distribution for the latent variables <span class="math inline">\(Z\)</span> or <span class="math inline">\(p(Z\mid X, \theta)\)</span></p></li>
+</ol>
+<p><strong>Limitation:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>EM estimate is only guaranteed to never get worse, but won’t necessarily find the global optimum of the likelihood</p></li>
+<li><p>In practice, start EM from multiple initial guesses and choose the one with the largest likelihood as the final guess for <span class="math inline">\(\theta\)</span></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="em-steps-5-step-version.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/edit/main/02-Intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/blob/main/02-Intro.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

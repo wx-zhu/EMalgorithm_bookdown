@@ -1,10 +1,12 @@
 --- 
 title: "EM Algorithm"
 subtitle: "MATH/STAT 455"
-author: "Sarah Tannert Lerner, Wenxuan Zhu, Jingyi Guan "
+author: "Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan "
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
 # Welcome!
+
+
 

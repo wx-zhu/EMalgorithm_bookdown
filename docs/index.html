@@ -20,7 +20,7 @@
   
   
 
-<meta name="author" content="Sarah Tannert Lerner, Wenxuan Zhu, Jingyi Guan" />
+<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan" />
 
 
 <meta name="date" content="2023-04-22" />
@@ -56,7 +56,7 @@
 
 
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="bootstrap.css" type="text/css" />
 </head>
 
 <body>
@@ -73,11 +73,17 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
-<li class="chapter" data-level="2" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>2</b> Introduction to EM</a></li>
-<li class="chapter" data-level="3" data-path="a-caucus-race-and-a-long-tale.html"><a href="a-caucus-race-and-a-long-tale.html"><i class="fa fa-check"></i><b>3</b> A caucus-race and a long tale</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>2</b> Introduction to EM</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-em.html"><a href="introduction-to-em.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Application 1: Binomial Mixture Model</a></li>
 <li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -98,7 +104,7 @@
 <div id="header">
 <h1 class="title">EM Algorithm</h1>
 <h2 class="subtitle"><em>MATH/STAT 455</em></h2>
-<p class="author"><em>Sarah Tannert Lerner, Wenxuan Zhu, Jingyi Guan</em></p>
+<p class="author"><em>Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan</em></p>
 <p class="date"><em>2023-04-22</em></p>
 </div>
 <div id="welcome" class="section level1 hasAnchor" number="1">
@@ -165,6 +171,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

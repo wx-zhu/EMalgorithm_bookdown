@@ -1,4 +1,8 @@
 welcome
 introduction-to-em
-a-caucus-race-and-a-long-tale
+introduction
+em-algorithm-given-condition-limitation
+em-steps-5-step-version
+application-1-binomial-mixture-model
 application-2-gaussian-mixture-model
+em-steps-2-key-step-version
