@@ -1,3 +1,4 @@
 welcome
-the-pool-of-tears
+introduction-to-em
 a-caucus-race-and-a-long-tale
+application-2-gaussian-mixture-model
