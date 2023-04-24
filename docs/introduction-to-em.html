@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan, Spring 2023, MATH/STAT 455, Macalester College" />
+<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan" />
 
 
-<meta name="date" content="2023-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +30,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="application-1-binomial-mixture-model.html"/>
+<link rel="next" href="example-binomial-mixture-model.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -79,13 +78,19 @@
 <li class="chapter" data-level="2.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
 <li class="chapter" data-level="2.4" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-2-key-step-version"><i class="fa fa-check"></i><b>2.4</b> EM Steps (2-key-step version)</a></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#reference"><i class="fa fa-check"></i><b>2.5</b> Reference:</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#references"><i class="fa fa-check"></i><b>2.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Application 1: Binomial Mixture Model</a>
+<li class="chapter" data-level="3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Example: Binomial Mixture Model</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html#references"><i class="fa fa-check"></i><b>3.1</b> References:</a></li>
+<li class="chapter" data-level="3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#references-1"><i class="fa fa-check"></i><b>3.1</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a></li>
+<li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#why-using-gmms"><i class="fa fa-check"></i><b>4.1</b> Why using GMMs?</a></li>
+<li class="chapter" data-level="4.2" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#what-is-gmms"><i class="fa fa-check"></i><b>4.2</b> What is GMMs?</a></li>
+<li class="chapter" data-level="4.3" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#gmm-using-em"><i class="fa fa-check"></i><b>4.3</b> GMM using EM</a></li>
+<li class="chapter" data-level="4.4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#references-2"><i class="fa fa-check"></i><b>4.4</b> References:</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -114,7 +119,7 @@
 <blockquote>
 <p>We have observed variables <span class="math inline">\(X\)</span>, but we believe (assume) that there are some “latent” variables <span class="math inline">\(Z\)</span> that we cannot observe.</p>
 </blockquote>
-<p>Usually, when given we only have knowledge about observed variables <span class="math inline">\(X\)</span>, we may want to calculate the MLE for the parameter of interest <span class="math inline">\(\theta\)</span> in this case:</p>
+<p>Usually, when given we only have knowledge about observed variables <span class="math inline">\(X\)</span>, we may want to calculate the <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">MLE</a> for the parameter of interest <span class="math inline">\(\theta\)</span> in this case:</p>
 <p><span class="math display">\[
 \hat{\theta}_{MLE} = \underset{\theta}{\operatorname{argmax}}  \log {L(\theta)}
 \]</span></p>
@@ -125,7 +130,7 @@
 <h2><span class="header-section-number">2.2</span> EM Algorithm Given Condition &amp; Limitation<a href="introduction-to-em.html#em-algorithm-given-condition-limitation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Given condition:</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>We have observed variables <span class="math inline">\(X\)</span>, but we believe (assume) that there are some “<em>latent” variables </em><span class="math inline">\(Z\)</span> that we cannot observe.</p></li>
+<li><p>We have observed variables <span class="math inline">\(X\)</span>, but we believe (assume) that there are some “<em>latent</em>” variables *<span class="math inline">\(Z\)</span> that we cannot observe.</p></li>
 <li><p>Assume some parameterized distribution for the latent variables <span class="math inline">\(Z\)</span> or <span class="math inline">\(p(Z\mid X, \theta)\)</span></p></li>
 </ol>
 <p><strong>Limitation:</strong></p>
@@ -162,8 +167,8 @@
 <li><p>Repeat until <span class="math inline">\(|\theta^{t+1} - \theta^m| &lt; \epsilon\)</span></p></li>
 </ol>
 </div>
-<div id="reference" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Reference:<a href="introduction-to-em.html#reference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="references" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> References:<a href="introduction-to-em.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf">EM Demystified: An Expectation-Maximization Tutorial</a></p></li>
 <li><p><a href="https://www.youtube.com/watch?v=2b47biOYSEI">Youtube: Expectation Maximization - 1 - Theory</a></p></li>
@@ -177,7 +182,7 @@
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="application-1-binomial-mixture-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-binomial-mixture-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

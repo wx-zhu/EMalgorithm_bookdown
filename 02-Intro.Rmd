@@ -23,7 +23,7 @@ However, for some problems, it is hard to solve the above equation.
 
 **Given condition:**    
 
-1. We have observed variables $X$, but we believe (assume) that there are some “*latent” variables *$Z$ that we cannot observe.  
+1. We have observed variables $X$, but we believe (assume) that there are some “*latent*” variables *$Z$ that we cannot observe.  
 
 2. Assume some parameterized distribution for the latent variables $Z$ or $p(Z\mid X, \theta)$ 
 

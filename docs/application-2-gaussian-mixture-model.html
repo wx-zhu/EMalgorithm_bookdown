@@ -20,17 +20,16 @@
   
   
 
-<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan, Spring 2023, MATH/STAT 455, Macalester College" />
+<meta name="author" content="Sarah Tannert-Lerner, Wenxuan Zhu, Jingyi Guan" />
 
 
-<meta name="date" content="2023-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="application-1-binomial-mixture-model.html"/>
+<link rel="prev" href="example-binomial-mixture-model.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -79,13 +78,23 @@
 <li class="chapter" data-level="2.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
 <li class="chapter" data-level="2.4" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-2-key-step-version"><i class="fa fa-check"></i><b>2.4</b> EM Steps (2-key-step version)</a></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#reference"><i class="fa fa-check"></i><b>2.5</b> Reference:</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#references"><i class="fa fa-check"></i><b>2.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Application 1: Binomial Mixture Model</a>
+<li class="chapter" data-level="3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Example: Binomial Mixture Model</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="application-1-binomial-mixture-model.html"><a href="application-1-binomial-mixture-model.html#references"><i class="fa fa-check"></i><b>3.1</b> References:</a></li>
+<li class="chapter" data-level="3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#references-1"><i class="fa fa-check"></i><b>3.1</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a></li>
+<li class="chapter" data-level="4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 2: Gaussian Mixture Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#why-using-gmms"><i class="fa fa-check"></i><b>4.1</b> Why using GMMs?</a></li>
+<li class="chapter" data-level="4.2" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#train-gmm-using-mle"><i class="fa fa-check"></i><b>4.2</b> Train GMM using MLE</a></li>
+<li class="chapter" data-level="4.3" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#train-simple-gmm-example-using-em"><i class="fa fa-check"></i><b>4.3</b> Train simple GMM example using EM</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#set-up"><i class="fa fa-check"></i><b>4.3.1</b> Set up</a></li>
+<li class="chapter" data-level="4.3.2" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#em-steps-two-key-step-version"><i class="fa fa-check"></i><b>4.3.2</b> EM steps (Two-key-step version)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="application-2-gaussian-mixture-model.html"><a href="application-2-gaussian-mixture-model.html#references-2"><i class="fa fa-check"></i><b>4.4</b> References:</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -108,14 +117,141 @@
             <section class="normal" id="section-">
 <div id="application-2-gaussian-mixture-model" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Topic 4</span> Application 2: Gaussian Mixture Model<a href="application-2-gaussian-mixture-model.html#application-2-gaussian-mixture-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="why-using-gmms" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Why using GMMs?<a href="application-2-gaussian-mixture-model.html#why-using-gmms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we have a dataset with 2 features. When you plot your dataset, it might look like this:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="image/pic1.png" alt="A dataset with 2 clusters, made by Maël Fabien" width="100%" />
+<p class="caption">
+Figure 4.1: A dataset with 2 clusters, made by Maël Fabien
+</p>
+</div>
+<p>From the above plot, there are 2 clusters. Thus, we are aiming to solve two tasks:</p>
+<ol style="list-style-type: decimal">
+<li><p>Clustering of the data</p></li>
+<li><p>Modeling of the distribution for the data and the corresponding parameters.</p></li>
+</ol>
+<p>Usually, when doing clustering, people will think of <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means</a>. But, in fact, K-means is just a special case for Gaussian Mixture Models (GMMs) when using a specific EM algorithm. The following plot shows some differences between K-means and GMMs for clustering. In general, for k-means, the clusters are defined by the data means whereas GMM, clusters are defined by data means and variance modeled as Gaussian (aka Normal distribution).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="image/pic2.png" alt="K-Means vs. GMMs for clustering, made by Maël Fabien" width="100%" />
+<p class="caption">
+Figure 4.2: K-Means vs. GMMs for clustering, made by Maël Fabien
+</p>
+</div>
+<p>Thus, when using 2 Gaussians, we want to find:</p>
+<ol style="list-style-type: decimal">
+<li><p>the mean and covariance of the first Gaussian</p></li>
+<li><p>the mean and covariance of the second Gaussian</p></li>
+<li><p>the weight of each Gaussian component</p></li>
+</ol>
+</div>
+<div id="train-gmm-using-mle" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Train GMM using MLE<a href="application-2-gaussian-mixture-model.html#train-gmm-using-mle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When training a GMM, we want to identify a set of parameters that characterize our GMM.</p>
+<p><span class="math display">\[
+\theta = (w_k, \mu_k, \Sigma_k), k = 1,2,3,\dots, M
+\]</span></p>
+<p>Similar to solve parameters in <strong>single</strong> Gaussian model using <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">MLE</a>, we can take the <em>Score function</em> <span class="math inline">\(\frac {dL}{d\theta}ln L(\theta)\)</span> using log-likelihood and set it equal to 0 again, where <span class="math inline">\(\prod^N_{i=1}\)</span> is all observations, <span class="math inline">\(\sum^M_{k=1}\)</span> is all components (number of clusters), <span class="math inline">\(w_k\)</span> is component weights, and <span class="math inline">\(N(x_i,\mu_k, \sigma^2_k)\)</span> are Gussians:</p>
+<p><span class="math display">\[
+\begin{aligned}
+L(\theta \mid X_1,\dots, X_n) &amp; = \prod ^N_{i=1} \sum^M_{k=1}w_k\;N(x_i,\mu_k, \sigma^2_k) \\
+ln L(\theta)  = \log L(\theta \mid X_1,\dots, X_n ) &amp;= \sum^N_{i=1} \log (\sum^M_{k=1} w_k \;N(x_i,\mu_k, \sigma^2_k)) \\
+\frac {dL}{d\theta}ln L(\theta) &amp;\stackrel{Set}{= }0
+\end{aligned}
+\]</span></p>
+<p>Unfortunately, the typical MLE approach reaches its limits since the above expression of <strong>Score function</strong> is analytically <strong>unsolvable</strong>. Thus, EM algorithm provides ways to overcome this unsolvable expression by maximizing the likelihood for the parameter of the interest and iterating till we have the desired estimate within the error range.</p>
+</div>
+<div id="train-simple-gmm-example-using-em" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Train simple GMM example using EM<a href="application-2-gaussian-mixture-model.html#train-simple-gmm-example-using-em" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Goal: Find which Gaussian component each observed data belongs to (<strong>latent</strong> variable <span class="math inline">\(Z\)</span>), which can help we to identify each Gaussian parameters.</li>
+</ul>
+<div id="set-up" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Set up<a href="application-2-gaussian-mixture-model.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we want to have a data set of <em>2 clusters in 1 dimension</em> to simplified the example so <span class="math inline">\(K=2\)</span> in <span class="math inline">\(1D\)</span>.</p>
+<ul>
+<li>Assumptions:
+We assume that we have observed variable <span class="math inline">\(X\)</span> and some latent variable <span class="math inline">\(Z\)</span> which decides which cluster the data points belong to. We also assume that the data given the cluster <span class="math inline">\(J\)</span> has a <em>Normal</em> distributes with mean <span class="math inline">\(\mu_j\)</span> and variance <span class="math inline">\(\sigma^2_j\)</span> corresponding to that cluster.</li>
+</ul>
+<p><span class="math display">\[
+X \mid Z = J \sim N(\mu_j, \sigma^2_j)
+\]</span></p>
+<ul>
+<li>Unknown parameters:
+In this case, we don’t know means <span class="math inline">\(\mu\)</span> and variances <span class="math inline">\(\sigma\)</span> for each clusters, and the probability of being in one of the 2 clusters <span class="math inline">\(p\)</span>. Since we only have 2 clusters, the probability of being in the other cluster is the complement probability of <span class="math inline">\(p\)</span>, or <span class="math inline">\((1-p)\)</span>.</li>
+</ul>
+<p><span class="math display">\[
+\theta = (p,\mu_0,\mu_1,\sigma_0,\sigma_1)
+\]</span></p>
+</div>
+<div id="em-steps-two-key-step-version" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> EM steps (Two-key-step version)<a href="application-2-gaussian-mixture-model.html#em-steps-two-key-step-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Start with random guess for <span class="math inline">\(\theta\)</span></p></li>
+<li><p>E step (finding the Q-function): <span class="math inline">\(Q(\theta \mid \theta^t) = E_{Z|X,\theta^m} [\log{p(x, z \mid \theta)}]\)</span></p>
+<ul>
+<li><p><strong>For a single observation: </strong>
+<span class="math display">\[
+\begin{aligned}
+p(X, Z\mid \theta) &amp; = p(x\mid z, \theta)\;p(z\mid\theta) \\
+&amp;= \left( \frac1{\sqrt{2 \pi}\sigma_0}e^{-\frac{(x-\mu_0)^2}{2\sigma_0^2}}(1-p)\right)^{1-Z} \;\left( \frac1{\sqrt{2 \pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}p\right)^{Z}
+\end{aligned}
+\]</span>
+The above expression means that <span class="math inline">\(p(x, z\mid \theta)\)</span> is equal to probability of the first cluster <span class="math inline">\(z=0\)</span> times the probability of that <span class="math inline">\((1-p)\)</span> and probability of the second cluster <span class="math inline">\(z=1\)</span> times the probability of that <span class="math inline">\(p\)</span>.</p></li>
+<li><p><strong>For a single observation: Q function </strong>
+<span class="math display">\[
+\begin{align}
+  Q(\theta \mid \theta^t) &amp; = E_{Z\mid X,\theta^t} [\log{p(x,z\mid \theta)}] \\
+  &amp; = (1-E(z)) \left(-\log{\sigma_0} - \frac{(x-\mu_0)^2}{x\sigma_0^2}+\log{(1-p)}+ const. \right) \\
+  &amp; \quad \;+ E(z) \left(-\log{\sigma_1} - \frac{(x-\mu_1)^2}{x\sigma_1^2}+\log{p}+ const. \right)
+\end{align}
+\]</span><br />
+Find the Q-function by calculating the expected <span class="math inline">\(\log {p(x, z\mid \theta)}\)</span> for a single observation.</p></li>
+<li><p><strong>For n (iid) observation: Q function </strong>
+<span class="math display">\[
+\begin{aligned}
+  Q(\theta \mid \theta^t)  
+  &amp; = \sum _i(1-E(z_i)) \left(-\log{\sigma_0} - \frac{(x-\mu_0)^2}{x\sigma_0^2}+\log{(1-p)}+ const. \right) \\
+  &amp; \quad \; + E(z_i) \left(-\log{\sigma_1} - \frac{(x-\mu_1)^2}{x\sigma_1^2}+\log{p}+ const. \right)
+\end{aligned}
+\]</span><br />
+Generalize the Q-function from the above single observation by taking the sum of <span class="math inline">\(z_i\)</span>.</p></li>
+<li><p><strong>For n (iid) observation:</strong> <span class="math inline">\(E(z_i)\)</span>
+<span class="math display">\[
+\begin{aligned}
+E(z_i) &amp; = 0 \;\cdot \; P(z_i = 0 \mid x_i) + 1 \;\cdot \; P(z_i = 1 \mid x_i) = P(z_i = 1 \mid x_i) \\
+&amp; = \frac{P(x_i\mid z_i=1) P(z_i=1)}{P(x_i\mid z_i=1) P(z_i=1) + P(x_i\mid z_i=0) P(z_i=0)} \\
+&amp; = \frac{P(x_i\mid z_i=1)\;\cdot\; p}{P(x_i\mid z_i=1)\;\cdot\; p+ P(x_i\mid z_i=0)\;\cdot\; (1-p)}
+\end{aligned}
+\]</span>
+Find the expected <span class="math inline">\(z_i\)</span> in the above Q-function giving the known information of each observed <span class="math inline">\(x_i\)</span>.</p></li>
+</ul></li>
+<li><p>M step (finding the new guess for <span class="math inline">\(\theta\)</span> by maximizing the Q-function): <span class="math inline">\(\theta^{t+1} = \underset{\theta}{\operatorname{argmax}} \: Q(\theta \mid \theta^t)\)</span></p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\frac {dQ}{d\mu_1} = \sum_i E(z_i)\left( \frac{x_i}{} \right)
+\end{aligned}
+\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Repeat until <span class="math inline">\(|\theta^{t+1} - \theta^m| &lt; \epsilon\)</span></li>
+</ol>
+</div>
+</div>
+<div id="references-2" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> References:<a href="application-2-gaussian-mixture-model.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://towardsdatascience.com/expectation-maximization-for-gmms-explained-5636161577ca">Expectation-Maximization for GMMs explained</a></li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="application-1-binomial-mixture-model.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="example-binomial-mixture-model.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
