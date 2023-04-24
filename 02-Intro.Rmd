@@ -8,7 +8,7 @@
 
 > We have observed variables $X$, but we believe (assume) that there are some “latent” variables $Z$ that we cannot observe. 
 
-Usually, when given we only have knowledge about observed variables $X$, we may want to calculate the MLE for the parameter of interest $\theta$ in this case: 
+Usually, when given we only have knowledge about observed variables $X$, we may want to calculate the [MLE](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation) for the parameter of interest $\theta$ in this case: 
 
 $$
 \hat{\theta}_{MLE} = \underset{\theta}{\operatorname{argmax}}  \log {L(\theta)}

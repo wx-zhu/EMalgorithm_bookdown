@@ -8,3 +8,4 @@ reference
 application-1-binomial-mixture-model
 references
 application-2-gaussian-mixture-model
+references-1

@@ -1,4 +1,4 @@
-# Application 1: Binomial Mixture Model
+# Example: Binomial Mixture Model
 
 
 
