@@ -251,7 +251,10 @@ for (i in 1:n){
 
 # plot the data
 df = data.frame(x = x, mu = as.factor(z))
-(plt = ggplot(df, aes(x = x[,1], y = x[,2], color = mu, fill = mu)) + geom_point())
+
+ggplot(df, aes(x = x[,1], y = x[,2], col = mu, fill = mu)) + 
+  geom_point() + 
+  scale_color_manual(values = c("#3B5BA5", "#E87A5D", "#F3B941"))
 ```
 ```{r}
 # E step 
