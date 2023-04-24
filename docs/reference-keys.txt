@@ -1,5 +1,5 @@
-fig:unnamed-chunk-33
-fig:unnamed-chunk-34
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2
 welcome
 introduction-to-em
 introduction
@@ -19,5 +19,3 @@ r-code-example
 one-dimension-2-components-example
 general-case
 references-2
-fig:unnamed-chunk-1
-fig:unnamed-chunk-2
