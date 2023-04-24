@@ -142,10 +142,175 @@ For the calculation below, we use weighed average, where the weights are the pro
 
 ## R code example
 
+```{r}
+# EM: GMM 
+library(ks) 
+library(mvtnorm)
+library(extraDistr)
+library(ggplot2)
+library(pracma)
+```
+
+### One dimension, 2 components example
+```{r}
+## 1 dimension, 2 components
+## sigma's, p are known; only estimate mu's
+set.seed(247)
+p = 0.3
+n = 2000
+
+# latent variable z
+z = rbinom(n, 1, p)
+
+# observed variables
+mu1 = 2
+sig1= sqrt(2)
+mu0 = -2
+sig0 = sqrt(1)
+x = rnorm(n, mu1, sig1)*z + rnorm(n, mu0, sig0)*(1-z)
+
+# plot data histogram
+hist(x, breaks = 50)
+```
+
+```{r}
+# E step
+doE <- function(theta){
+  mu0 = theta[1]
+  mu1 = theta[2]
+  E = rep(NA, n)
+  for (i in 1:n){
+    a = dnorm(x[i], mean = mu1, sd = sig1)*p
+    b = dnorm(x[i], mean = mu0, sd = sig0)*(1-p)
+    E[i] = a/(a+b)
+  }
+  return(E)
+}
+
+# M step
+doM <- function(E){
+  theta = rep(NA,2)
+  theta[1] = sum((1-E)*x) / sum(1-E)
+  theta[2] = sum(E*x) / sum(E)
+  return(theta)
+}
+
+EM <- function(theta, maxIter = 50, tol = 1e-5){
+  theta.t = theta
+  for (i in 1:maxIter){
+    E = doE(theta.t)
+    theta.t = doM(E)
+    cat("Interation: ", i, " pt: ", theta.t, "\n")
+    if (norm(theta.t - theta, type = "2") < tol)
+      break 
+    theta = theta.t
+  }
+  return(theta.t)
+}
+```
+
+```{r}
+# Initial values
+theta0 = rmvnorm(1, mean = c(0,0))
+(theta.final = EM(theta0))
+
+## estimate p, mu's and sigma's 
+```
+
+
+### General case
+
+We also include the code for a more general version of EM algorithm in GMM questions for simulation and hand-on further exploration. If you are curious about the calculation for the following general case, look at the second half of the [youtube video](https://www.youtube.com/watch?v=5SdbnCuzXEo). 
+
+```{r}
+## K * 2D Gaussians 
+set.seed(247)
+
+# Params 
+K = 3
+phis = rdirichlet(1, rep(1, K))
+j = 2 # how far apart the centers are
+mus = matrix(c(j,-j,0,j,j,-j), ncol = 2) # rmvnorm(K, mean = c(0, 0))
+Sigmas = vector("list", K)
+for (k in 1:K){
+  mat = matrix(rnorm(100), ncol = 2)
+  Sigmas[[k]] = cov(mat)
+}
+
+# Latent 
+z = rcat(n, phis)
+
+# Observed (generated)
+x = matrix(nrow = n, ncol = 2)
+for (i in 1:n){
+  k = z[i]
+  mu = mus[k,]
+  sigma = Sigmas[[k]]
+  x[i,] = rmvnorm(1, mean = mu, sigma = sigma)
+}
+
+# plot the data
+df = data.frame(x = x, mu = as.factor(z))
+(plt = ggplot(df, aes(x = x[,1], y = x[,2], color = mu, fill = mu)) + geom_point())
+```
+```{r}
+# E step 
+doE <- function(theta){
+  E = with(theta, do.call(cbind, lapply(1:K, function(k) phis[[k]]*dmvnorm(x, mus[[k]], Sigmas[[k]]))))
+  E/rowSums(E)
+}
+
+# M step 
+doM <- function(E){
+  phis = colMeans(E)
+  covs = lapply(1:K, function(k) cov.wt(x, E[, k], method = "ML"))
+  mus = lapply(covs, "[[", "center")
+  sig = lapply(covs, "[[", "cov")
+  return(list(mus = mus, Sigmas = sig, phis = phis))
+}
+
+logLikelihood <- function(theta){
+  probs = with(theta, do.call(cbind, lapply(1:K, function(i) phis[i] * dmvnorm(x, mus[[i]], Sigmas[[i]]))))
+  sum(log(rowSums(probs)))
+}
+
+EM <- function(theta, maxIter = 30, tol = 1e-1){
+  theta.t = theta
+  for (i in 1:maxIter){
+    E = doE(theta.t)
+    theta.t = doM(E)
+    ll.diff = logLikelihood(theta.t) - logLikelihood(theta)
+    cat("Iteration: ", i, " ll differnece: ", ll.diff, "\n")
+    if (abs(ll.diff) < tol) 
+      break
+    theta = theta.t
+  }
+  return(theta.t)
+}
+```
+
+```{r}
+# inital values
+set.seed(1)
+phis0 = rdirichlet(1, rep(1,K))
+mus0 = vector("list", K)
+Sigmas0 = vector("list", K)
+for (k in 1:K){
+  mat = matrix(rnorm(100), ncol = 2)
+  mus0[[k]] = rmvnorm(1, mean = c(3,-3))
+  Sigmas0[[k]] = cov(mat)
+}
+theta0 = list(mus = mus0, Sigmas = Sigmas0, phis = phis0)
+(theta.final = EM(theta0))
+
+```
+
 
 
 
 ## References: 
 
 1. [Expectation-Maximization for GMMs explained](https://towardsdatascience.com/expectation-maximization-for-gmms-explained-5636161577ca)
+
+2. [Youtube video: EM - GMM Example](https://www.youtube.com/watch?v=5SdbnCuzXEo)
 
