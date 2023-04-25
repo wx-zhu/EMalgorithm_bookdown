@@ -19,3 +19,4 @@ r-code-example
 simple-example-with-2-components-in-1-dimension
 general-case
 references-2
+application-2-hidden-markov
