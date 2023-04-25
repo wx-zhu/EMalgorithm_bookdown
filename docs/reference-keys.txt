@@ -9,15 +9,13 @@ em-steps-2-key-step-version
 references
 example-binomial-mixture-model
 references-1
-application-2-gaussian-mixture-model
+application-1-gaussian-mixture-model
 why-using-gmms
 train-gmm-using-mle
 train-simple-gmm-example-using-em
 set-up
 em-steps-two-key-step-version
 r-code-example
-one-dimension-2-components-example
+simple-example-with-2-components-in-1-dimension
 general-case
 references-2
-application-1-gaussian-mixture-model
-simple-example-with-2-components-in-1-dimension

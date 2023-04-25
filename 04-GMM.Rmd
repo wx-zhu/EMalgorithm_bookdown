@@ -169,7 +169,7 @@ sig0 = sqrt(1)
 x = rnorm(n, mu1, sig1)*z + rnorm(n, mu0, sig0)*(1-z)
 
 # plot data histogram
-hist(x, breaks = 50, col = "#E87A5D")
+hist(x, breaks = 50, col = "#F3B941")
 ```
 
 ```{r}
