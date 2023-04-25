@@ -1,4 +1,4 @@
-# Application 2: Gaussian Mixture Model
+# Application 1: Gaussian Mixture Model
 
 ## Why using GMMs?
 
@@ -120,7 +120,6 @@ Find the expected $z_i$ in the above Q-function giving the known information of 
 
 
 3. M step (finding the new guess for $\theta$ by maximizing the Q-function): $\theta^{t+1} = \underset{\theta}{\operatorname{argmax}} \: Q(\theta \mid \theta^t)$
-
 For the calculation below, we use weighed average, where the weights are the probability of being in the 1st "class". 
 \[
 \begin{aligned}
@@ -151,7 +150,7 @@ library(ggplot2)
 library(pracma)
 ```
 
-### One dimension, 2 components example
+### Simple example with 2 components in 1 dimension
 ```{r}
 ## 1 dimension, 2 components
 ## sigma's, p are known; only estimate mu's
@@ -170,7 +169,7 @@ sig0 = sqrt(1)
 x = rnorm(n, mu1, sig1)*z + rnorm(n, mu0, sig0)*(1-z)
 
 # plot data histogram
-hist(x, breaks = 50)
+hist(x, breaks = 50, col = "#E87A5D")
 ```
 
 ```{r}
@@ -254,7 +253,8 @@ df = data.frame(x = x, mu = as.factor(z))
 
 ggplot(df, aes(x = x[,1], y = x[,2], col = mu, fill = mu)) + 
   geom_point() + 
-  scale_color_manual(values = c("#3B5BA5", "#E87A5D", "#F3B941"))
+  scale_color_manual(values = c("#3B5BA5", "#E87A5D", "#F3B941")) + 
+  theme_minimal()
 ```
 ```{r}
 # E step 

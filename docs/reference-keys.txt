@@ -19,3 +19,5 @@ r-code-example
 one-dimension-2-components-example
 general-case
 references-2
+application-1-gaussian-mixture-model
+simple-example-with-2-components-in-1-dimension
