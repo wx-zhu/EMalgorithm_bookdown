@@ -19,4 +19,13 @@ r-code-example
 simple-example-with-2-components-in-1-dimension
 general-case
 references-2
-application-2-hidden-markov
+application-2-hidden-markov-model
+overview-of-hidden-markov-model
+markov-chain
+hidden-markov-model
+baum-welch-algorithm
+intuition
+algorithm-in-steps
+implementation-in-r
+hmm-package
+revisit-weather-grass-example
