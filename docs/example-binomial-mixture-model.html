@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 3 Example: Binomial Mixture Model | EM Algorithm</title>
-  <meta name="description" content="Topic 3 Example: Binomial Mixture Model | EM Algorithm" />
+  <title>Topic 4 Example: Binomial Mixture Model | EM Algorithm</title>
+  <meta name="description" content="Topic 4 Example: Binomial Mixture Model | EM Algorithm" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 3 Example: Binomial Mixture Model | EM Algorithm" />
+  <meta property="og:title" content="Topic 4 Example: Binomial Mixture Model | EM Algorithm" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 3 Example: Binomial Mixture Model | EM Algorithm" />
+  <meta name="twitter:title" content="Topic 4 Example: Binomial Mixture Model | EM Algorithm" />
   
   
   
@@ -136,51 +136,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
-<li class="chapter" data-level="2" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>2</b> Introduction to EM</a>
+<li class="chapter" data-level="2" data-path="real-world-application.html"><a href="real-world-application.html"><i class="fa fa-check"></i><b>2</b> Real World Application</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction-to-em.html"><a href="introduction-to-em.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-2-key-step-version"><i class="fa fa-check"></i><b>2.4</b> EM Steps (2-key-step version)</a></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#references"><i class="fa fa-check"></i><b>2.5</b> References:</a></li>
+<li class="chapter" data-level="2.1" data-path="real-world-application.html"><a href="real-world-application.html#image-segmentation"><i class="fa fa-check"></i><b>2.1</b> Image Segmentation</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="real-world-application.html"><a href="real-world-application.html#introduction"><i class="fa fa-check"></i><b>2.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.1.2" data-path="real-world-application.html"><a href="real-world-application.html#latent-variable"><i class="fa fa-check"></i><b>2.1.2</b> Latent variable</a></li>
+<li class="chapter" data-level="2.1.3" data-path="real-world-application.html"><a href="real-world-application.html#why-em"><i class="fa fa-check"></i><b>2.1.3</b> Why EM?</a></li>
+<li class="chapter" data-level="2.1.4" data-path="real-world-application.html"><a href="real-world-application.html#example"><i class="fa fa-check"></i><b>2.1.4</b> Example</a></li>
+<li class="chapter" data-level="2.1.5" data-path="real-world-application.html"><a href="real-world-application.html#related-work"><i class="fa fa-check"></i><b>2.1.5</b> Related Work</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Example: Binomial Mixture Model</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#references-1"><i class="fa fa-check"></i><b>3.1</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 1: Gaussian Mixture Model</a>
+<li class="chapter" data-level="3" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>3</b> Introduction to EM</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#why-using-gmms"><i class="fa fa-check"></i><b>4.1</b> Why using GMMs?</a></li>
-<li class="chapter" data-level="4.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-gmm-using-mle"><i class="fa fa-check"></i><b>4.2</b> Train GMM using MLE</a></li>
-<li class="chapter" data-level="4.3" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-simple-gmm-example-using-em"><i class="fa fa-check"></i><b>4.3</b> Train simple GMM example using EM</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#set-up"><i class="fa fa-check"></i><b>4.3.1</b> Set up</a></li>
-<li class="chapter" data-level="4.3.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#em-steps-two-key-step-version"><i class="fa fa-check"></i><b>4.3.2</b> EM steps (Two-key-step version)</a></li>
+<li class="chapter" data-level="3.1" data-path="introduction-to-em.html"><a href="introduction-to-em.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>3.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>3.3</b> EM Steps (5-step version)</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-2-key-step-version"><i class="fa fa-check"></i><b>3.4</b> EM Steps (2-key-step version)</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#references"><i class="fa fa-check"></i><b>3.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#r-code-example"><i class="fa fa-check"></i><b>4.4</b> R code example</a>
+<li class="chapter" data-level="4" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Example: Binomial Mixture Model</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#simple-example-with-2-components-in-1-dimension"><i class="fa fa-check"></i><b>4.4.1</b> Simple example with 2 components in 1 dimension</a></li>
-<li class="chapter" data-level="4.4.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#general-case"><i class="fa fa-check"></i><b>4.4.2</b> General case</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#references-2"><i class="fa fa-check"></i><b>4.5</b> References:</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html"><i class="fa fa-check"></i><b>5</b> Application 2: Hidden Markov Model</a>
+<li class="chapter" data-level="4.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#overview-of-binomial-mixture-model"><i class="fa fa-check"></i><b>4.1</b> Overview of Binomial Mixture Model</a></li>
+<li class="chapter" data-level="4.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#flipping-coins-example-illustrated"><i class="fa fa-check"></i><b>4.2</b> Flipping Coins Example Illustrated</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#overview-of-hidden-markov-model"><i class="fa fa-check"></i><b>5.1</b> Overview of Hidden Markov Model</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#markov-chain"><i class="fa fa-check"></i><b>5.1.1</b> Markov Chain</a></li>
-<li class="chapter" data-level="5.1.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hidden-markov-model"><i class="fa fa-check"></i><b>5.1.2</b> Hidden Markov Model</a></li>
+<li class="chapter" data-level="4.2.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#scenario"><i class="fa fa-check"></i><b>4.2.1</b> Scenario</a></li>
+<li class="chapter" data-level="4.2.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#algorithm-steps"><i class="fa fa-check"></i><b>4.2.2</b> Algorithm steps</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#baum-welch-algorithm"><i class="fa fa-check"></i><b>5.2</b> Baum-Welch Algorithm</a>
+<li class="chapter" data-level="4.3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#implementation-in-r"><i class="fa fa-check"></i><b>4.3</b> Implementation in R</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#intuition"><i class="fa fa-check"></i><b>5.2.1</b> Intuition</a></li>
-<li class="chapter" data-level="5.2.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#algorithm-in-steps"><i class="fa fa-check"></i><b>5.2.2</b> Algorithm in steps</a></li>
+<li class="chapter" data-level="4.3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#simplified-case-2-coin"><i class="fa fa-check"></i><b>4.3.1</b> Simplified case (2-coin)</a></li>
+<li class="chapter" data-level="4.3.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#generalized-case-k-coin"><i class="fa fa-check"></i><b>4.3.2</b> Generalized case (k-coin)</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#implementation-in-r"><i class="fa fa-check"></i><b>5.3</b> Implementation in R</a>
+<li class="chapter" data-level="4.4" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#references-1"><i class="fa fa-check"></i><b>4.4</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>5</b> Application 1: Gaussian Mixture Model</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hmm-package"><i class="fa fa-check"></i><b>5.3.1</b> HMM package</a></li>
-<li class="chapter" data-level="5.3.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#revisit-weather-grass-example"><i class="fa fa-check"></i><b>5.3.2</b> Revisit Weather-Grass Example</a></li>
+<li class="chapter" data-level="5.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#why-using-gmms"><i class="fa fa-check"></i><b>5.1</b> Why using GMMs?</a></li>
+<li class="chapter" data-level="5.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-gmm-using-mle"><i class="fa fa-check"></i><b>5.2</b> Train GMM using MLE</a></li>
+<li class="chapter" data-level="5.3" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-simple-gmm-example-using-em"><i class="fa fa-check"></i><b>5.3</b> Train simple GMM example using EM</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#set-up"><i class="fa fa-check"></i><b>5.3.1</b> Set up</a></li>
+<li class="chapter" data-level="5.3.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#em-steps-two-key-step-version"><i class="fa fa-check"></i><b>5.3.2</b> EM steps (Two-key-step version)</a></li>
 </ul></li>
+<li class="chapter" data-level="5.4" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#r-code-example"><i class="fa fa-check"></i><b>5.4</b> R code example</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#simple-example-with-2-components-in-1-dimension"><i class="fa fa-check"></i><b>5.4.1</b> Simple example with 2 components in 1 dimension</a></li>
+<li class="chapter" data-level="5.4.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#general-case"><i class="fa fa-check"></i><b>5.4.2</b> General case</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#references-2"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html"><i class="fa fa-check"></i><b>6</b> Application 2: Hidden Markov Model</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#overview-of-hidden-markov-model"><i class="fa fa-check"></i><b>6.1</b> Overview of Hidden Markov Model</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#markov-chain"><i class="fa fa-check"></i><b>6.1.1</b> Markov Chain</a></li>
+<li class="chapter" data-level="6.1.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hidden-markov-model"><i class="fa fa-check"></i><b>6.1.2</b> Hidden Markov Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#baum-welch-algorithm"><i class="fa fa-check"></i><b>6.2</b> Baum-Welch Algorithm</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#intuition"><i class="fa fa-check"></i><b>6.2.1</b> Intuition</a></li>
+<li class="chapter" data-level="6.2.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#algorithm-in-steps"><i class="fa fa-check"></i><b>6.2.2</b> Algorithm in steps</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#implementation-in-r-1"><i class="fa fa-check"></i><b>6.3</b> Implementation in R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hmm-package"><i class="fa fa-check"></i><b>6.3.1</b> HMM package</a></li>
+<li class="chapter" data-level="6.3.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#revisit-weather-grass-example"><i class="fa fa-check"></i><b>6.3.2</b> Revisit Weather-Grass Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#references-3"><i class="fa fa-check"></i><b>6.4</b> References:</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -202,10 +225,485 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="example-binomial-mixture-model" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Topic 3</span> Example: Binomial Mixture Model<a href="example-binomial-mixture-model.html#example-binomial-mixture-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="references-1" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> References:<a href="example-binomial-mixture-model.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="example-binomial-mixture-model" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Topic 4</span> Example: Binomial Mixture Model<a href="example-binomial-mixture-model.html#example-binomial-mixture-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="overview-of-binomial-mixture-model" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Overview of Binomial Mixture Model<a href="example-binomial-mixture-model.html#overview-of-binomial-mixture-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A binomial mixture model is a statistical model that allows for the possibility that the observed data is generated from a mixture of two or more binomial distributions. In other words, the model assumes that the data comes from two or more groups or sub-populations, each of which may have a different probability of success for a given binary outcome.</p>
+<p>For example, consider a study of the effectiveness of a new medication in treating a disease. The data may consist of the number of patients who respond positively to the medication and the number who do not. If there are two or more sub-populations of patients with different response rates, a binomial mixture model can be used to model the data.</p>
+<p>The binomial mixture model is a useful tool for modeling data that comes from multiple sub-populations with different characteristics. It has applications in many areas, including medicine, biology, marketing, and finance.</p>
+</div>
+<div id="flipping-coins-example-illustrated" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Flipping Coins Example Illustrated<a href="example-binomial-mixture-model.html#flipping-coins-example-illustrated" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scenario" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Scenario<a href="example-binomial-mixture-model.html#scenario" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assume we have 2 biased coins indexed <span class="math inline">\(z=0\)</span> and <span class="math inline">\(z=1\)</span> with probability <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span> of landing heads, respectively.</p>
+<p>Suppose we randomly pick one of the coins and flip it m times, and do this procedure for <span class="math inline">\(n\)</span> trials, and we observe and record the <span class="math inline">\(m × n\)</span> results: <span class="math inline">\(X_{11}, ..., X_{mn}\)</span>, where <span class="math inline">\(X_{ij}\)</span> is the r.v. denoting the outcome of the <span class="math inline">\(i^{th}\)</span> coin flip from the <span class="math inline">\(j^{th}\)</span> trial, with <span class="math inline">\(X_{ij} = 1\)</span> indicating heads and <span class="math inline">\(X_{ij} = 0\)</span> indicating tails.</p>
+<p>Then, we have that</p>
+<p><span class="math display">\[
+X_i\mid_{z=0} \sim Bernoulli(p_0)
+\]</span></p>
+<p><span class="math display">\[
+X_i\mid_{z=1} \sim Bernoulli(p_1)
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\sum_{i=1}^{m}X_i\mid_{z=0} \sim Binomial(m, p_0)
+\]</span></p>
+<p><span class="math display">\[
+\sum_{i=1}^{m}X_i\mid_{z=1} \sim Binomial(m, p_1)
+\]</span></p>
+<p>If the sequence <span class="math inline">\(\{z_j\}\)</span>, where <span class="math inline">\(j\)</span> indexing individual trials, is given, we can simply use MLE to estimate <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span> that maximize the probability that we observed the outcomes that we observed.</p>
+<p>However, when the sequence <span class="math inline">\(\{z_j\}\)</span> is unknown, we should use the EM algorithm!</p>
+</div>
+<div id="algorithm-steps" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Algorithm steps<a href="example-binomial-mixture-model.html#algorithm-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Following the steps we discussed in the previous video, the complete procedure of deriving the estimates can be summarized as follows.</p>
+<p><strong>Step 1</strong> Pick initial guess: <span class="math inline">\(p_0^{(t=0)}\)</span> and <span class="math inline">\(p_1^{(t=0)}\)</span>.</p>
+<p><strong>Step 2</strong> Derive the joint pdf</p>
+<p>Recall that we denote the true probability of the coin indexed <span class="math inline">\(z=0\)</span> landing heads to be <span class="math inline">\(p_0\)</span> and the true probability of the coin indexed <span class="math inline">\(z=1\)</span> landing heads to be <span class="math inline">\(p_1\)</span>. Assume <span class="math inline">\(p_0 = p_0^{(t)}\)</span> and <span class="math inline">\(p_1 = p_1^{(t)}\)</span>. Get the joint pdf as follows.</p>
+<p><span class="math display">\[
+P(X_{11},\cdots, X_{mn}, \mathbf{z}\mid p_0^{(t)}, p_1^{(t)}) = \prod_{j=1}^{n}\frac{1}{2}[{p_0^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_0^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{1-z_j} [{p_1^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_1^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{z_j}
+\]</span></p>
+<p><strong>Step 3</strong> Get Q-function using the joint pdf we got in step 2.</p>
+<p>Let <span class="math inline">\(\mathbf{p} = (p_0, p_1)\)</span> and <span class="math inline">\(\mathbf{p}^t = (p_0^t, p_1^t)\)</span>.</p>
+<p>Recall the Q-function defined as follow in this specific scenario.</p>
+<p><span class="math display">\[
+Q(p;p^t) = \mathbb{E}_{\mathbf{z}\mid \mathbf{x}, p^{t}}\log p(\mathbf{x},\mathbf{z}\mid \mathbf{p})
+\]</span></p>
+<p>, where <span class="math inline">\(z\)</span> denotes our missing data, <span class="math inline">\(x\)</span> is the observations.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \log{p(\mathbf{x}, \mathbf{z}\mid p_0, p_1)}
+    &amp;= n\log{\frac{1}{2}} +\sum_{j=1}^{n}[(1-z_j)\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &amp;+ z_j \log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+\]</span></p>
+<p>Ignore the constant <span class="math inline">\(n\log{\frac{1}{2}}\)</span>, then we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \log{p(\mathbf{x}, \mathbf{z}\mid p_0, p_1)} \approx \sum_{j=1}^{n}[(1-z_j)\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    + z_j \log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+\]</span></p>
+<p>The Q-function can thus be written as follows.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    Q(p;p^t)
+    &amp;\approx \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &amp;+ \mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+\]</span></p>
+<p>Then, let’s calculated the expected value of <span class="math inline">\(\textbf{z}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;\mathbb{E}_{\mathbf{z}\mid \mathbf{x},\mathbf{p}^{t}}[z_j] = p(z_j=1\mid \sum_{i=1}^{m}X_i, \mathbf{p}^t) \text{ , because } z_j \sim Bernoulli(0.5) \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{\sum_{j=1}^{n} p(\sum_{i=1}^{m} X_i \mid z_j, \mathbf{p}^t)p(z_j)} \text{ , Bayes&#39; Rule } \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)+p(\sum_{i=1}^{m} X_i \mid z_j=0, \mathbf{p}^t)p(z_j=0)} \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p_1^{\sum_{i=1}^{m} X_i}(1-p_1)^{m-\sum_{i=1}^{m} X_i}p(z_j=1)+p_0^{\sum_{i=1}^{m} X_i}(1-p_0)^{m-\sum_{i=1}^{m} X_i}p(z_j=0)} \\
+    &amp;\text{ , because }\sum_{i=1}^{m} X_i \text{ follows binomial distribution}\\
+\end{aligned}
+\]</span></p>
+<p>We have our initial guess or guess from last iteration for <span class="math inline">\(p_0\)</span>, <span class="math inline">\(p_1\)</span>, and we have observed <span class="math inline">\(\sum X_i, m\)</span>, and we assumed that <span class="math inline">\(P(z_j=1) = P(z_j=0) = \frac{1}{2}\)</span>. Thus, we can calculate <span class="math inline">\(\mathbb{E}(z_j)\)</span>. Now, we take <span class="math inline">\(\mathbb{E}(z_j)\)</span> as known.</p>
+<p><strong>Step 4</strong> Make new guess <span class="math inline">\(p_0^{t+1}\)</span> and <span class="math inline">\(p_1^{t+1}\)</span>.</p>
+<p><span class="math display">\[
+\mathbf{p}^{t+1} = \underset{\mathbf{p}}{\operatorname{argmax}} Q(\mathbf{p};\mathbf{p}^t)
+\]</span></p>
+<p>To maximize the Q-function <span class="math inline">\(Q(\mathbf{p};\mathbf{p}^{t})\)</span>, we take the derivative of it and set it to zero. Since <span class="math inline">\(\mathbf{p}\)</span> contains <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span>, we need to take 2 derivatives.</p>
+<p>First, take the derivative of the Q-function with respect to <span class="math inline">\(p_0\)</span> and set it to zero.
+<span class="math display">\[
+\begin{aligned}
+   \frac{d Q(\mathbf{p};\mathbf{p}^t)}{d p_0^t} &amp;= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{ \sum_{i=1}^{m}x_{ij}}(1-p_0)^{m- \sum_{i=1}^{m}x_{ij}}]}
+   \\
+   &amp; \quad\; + \mathbb{E}(z_j) \log{[p_1^{ \sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}] \\
+   &amp;= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]}]\\
+   &amp;= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))(\sum_{i=1}^{m}x_{ij}\log{p_0} + (m-\sum_{i=1}^{m}x_{ij})\log(1-p_0)]\\
+   &amp;=\sum_{j=1}^{n} (1-\mathbb{E}(z_j))(\frac{\sum_{i=1}^{m} X_{ij}}{p_0} - \frac{m-\sum_{i=1}^{m}X_{ij}}{1-p_0})\\ &amp;\stackrel{set}{=} 0 \\
+\end{aligned}
+\]</span></p>
+<p>Solve the score function to get <span class="math inline">\(\hat{p}_0\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{j=1}^{n} (1-\mathbb{E}(z_j))(\frac{\sum_{i=1}^{m} X_{ij}}{p_0} - \frac{m-\sum_{i=1}^{m}X_{ij}}{1-p_0}) &amp;\stackrel{set}{=} 0 \\
+\frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij})}{p_0} &amp;= \frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))(m-\sum_{i=1}^{m}x_{ij}))}{1-p_0} \\
+(1-p_0)\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &amp;= p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j))(m-\sum_{i=1}^{m}x_{ij})) \\
+\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) - p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &amp;= mp_0\sum_{j=1}^{n}(1-\mathbb{E}(z_j)) - p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j)\sum_{i=1}^{m}x_{ij}) \\
+\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &amp;= mp_0\sum_{j=1}^{n}(1-\mathbb{E}(z_j)) \\
+\hat{p}_0 &amp;= \frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij})}{m\sum_{j=1}^{n}(1-\mathbb{E}(z_j))}
+\end{aligned}
+\]</span></p>
+<p>Next, take the derivative of the Q-function with respect to <span class="math inline">\(p_1\)</span> and set it to zero.</p>
+<p><span class="math display">\[
+\begin{aligned}
+   \frac{d Q(\mathbf{p};\mathbf{p}^t)}{d p_1^t} &amp;= \frac{d}{d p_1} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{ \sum_{i=1}^{m}x_{ij}}(1-p_0)^{m- \sum_{i=1}^{m}x_{ij}}]}
+   \\
+   &amp; \quad\; + \mathbb{E}(z_j) \log{[p_1^{ \sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}] \\
+   &amp;= \frac{d}{d p_1} \sum_{j=1}^{n}[\mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]\\
+   &amp;= \frac{d}{d p_1} \sum_{j=1}^{n}[\mathbb{E}(z_j)(\sum_{i=1}^{m}x_{ij}\log{p_1} + (m-\sum_{i=1}^{m}x_{ij})\log(1-p_1)] \\
+   &amp;=\sum_{j=1}^{n} \mathbb{E}(z_j)(\frac{\sum_{i=1}^{m} x_{ij}}{p_1} - \frac{m-\sum_{i=1}^{m}x_{ij}}{1-p_1})\\ &amp;\stackrel{set}{=} 0 \\
+\end{aligned}
+\]</span></p>
+<p>Solve the score function to get <span class="math inline">\(\hat{p}_1\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{j=1}^{n} \mathbb{E}(z_j)(\frac{\sum_{i=1}^{m} x_{ij}}{p_1} - \frac{m-\sum_{i=1}^{m}x_{ij}}{1-p_1}) &amp;\stackrel{set}{=} 0 \\
+\frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij}}{p_1} &amp;= \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)(m-\sum_{i=1}^{m}x_{ij})}{1-p_1} \\
+(1-p_1)\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &amp;= p_1\sum_{j=1}^{n}\mathbb{E}(z_j)(m-\sum_{i=1}^{m}x_{ij}) \\
+\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} - p_1\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &amp;= mp_1\sum_{j=1}^{n}\mathbb{E}(z_j) - \sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m}x_{ij}\\
+\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &amp;= mp_1\sum_{j=1}^{n}\mathbb{E}(z_j) \\
+\hat{p}_1 = \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij}}{m\sum_{j=1}^{n}\mathbb{E}(z_j)}
+\end{aligned}
+\]</span></p>
+<p>We set <span class="math inline">\(p_0^{t+1} = \hat{p}_0\)</span> and <span class="math inline">\(p_1^{t+1} = \hat{p}_1\)</span> to let those estimates be our estimated results for this new iteration.</p>
+<p><strong>Step 5</strong> Condition to stop otherwise keep iterating</p>
+<p>If it reaches numerical precision when comparing <span class="math inline">\(\textbf{p}^{t}\)</span> and <span class="math inline">\(\textbf{p}^{t+1}\)</span>, we stop the procedure and take the estimates from the last iteration as our results.</p>
+<p>Otherwise, let <span class="math inline">\(t=t+1\)</span>, and repeat step 2-5 until it reaches numerical precision.</p>
+</div>
+</div>
+<div id="implementation-in-r" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Implementation in R<a href="example-binomial-mixture-model.html#implementation-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simplified-case-2-coin" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Simplified case (2-coin)<a href="example-binomial-mixture-model.html#simplified-case-2-coin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Set up</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="example-binomial-mixture-model.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">455</span>)</span>
+<span id="cb1-2"><a href="example-binomial-mixture-model.html#cb1-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="dv">2</span> <span class="co"># number of coins we have </span></span>
+<span id="cb1-3"><a href="example-binomial-mixture-model.html#cb1-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">runif</span>(K) <span class="co"># the probability of each coin to fall on Heads (TRUE PARAMETER!)</span></span>
+<span id="cb1-4"><a href="example-binomial-mixture-model.html#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span> <span class="co"># number of trials</span></span>
+<span id="cb1-5"><a href="example-binomial-mixture-model.html#cb1-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="dv">10</span> <span class="co"># number of flips per trial</span></span>
+<span id="cb1-6"><a href="example-binomial-mixture-model.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Note here that we are using one single coin for a whole trial, we never change coins within one trial</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="example-binomial-mixture-model.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent - coin sequence - sequence with 0 and 1, where 0 on the ith spot means we are using the z = 0 coin on the ith trial</span></span>
+<span id="cb2-2"><a href="example-binomial-mixture-model.html#cb2-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> <span class="fu">rbinom</span>(n,<span class="dv">1</span>,<span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>##    [1] 0 1 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 0 1 1 0 1 1 1 1 0
+##   [34] 1 0 1 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1 1 1 1
+##   [67] 0 1 0 1 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1
+##  [100] 1 0 1 0 0 1 1 0 1 0 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 1 1 1 0 1 1 1
+##  [133] 1 0 1 0 1 1 1 0 1 0 0 0 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0
+##  [166] 0 0 1 1 1 1 1 0 1 1 0 1 0 0 0 0 1 1 0 1 1 0 0 0 0 0 1 1 0 0 0 1 1
+##  [199] 1 1 1 0 1 1 1 0 0 0 1 0 0 1 0 1 1 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 1
+##  [232] 0 1 1 1 1 0 0 0 1 1 0 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 0 1 0 1 1 1
+##  [265] 1 1 1 1 1 0 0 0 0 0 0 1 1 0 1 1 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 1 1
+##  [298] 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 1 1 0 1 0 1 1 1 0 0 1 0 0 1
+##  [331] 1 1 1 1 1 0 1 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0
+##  [364] 1 1 1 1 0 0 0 1 1 1 1 1 0 0 0 1 0 0 1 0 1 0 0 1 0 0 0 0 1 1 1 1 1
+##  [397] 1 1 0 1 1 1 1 1 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1 0 1 1 1 1 0 0 1 1
+##  [430] 0 1 1 1 1 0 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 1 1 0 0 1 0 0 0 1 1 1 1
+##  [463] 0 0 0 1 1 1 1 0 1 1 0 1 0 0 0 1 1 1 0 0 1 1 0 1 1 0 1 1 0 1 1 1 0
+##  [496] 0 0 1 0 1 0 1 1 1 1 1 0 1 0 1 0 1 0 0 0 0 1 1 0 1 0 0 0 1 1 0 0 0
+##  [529] 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 0 1 0 1 1 0 1 0 0 0 1 1 0 1 0 0 1
+##  [562] 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 1 0
+##  [595] 0 1 0 1 1 0 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 1 0
+##  [628] 1 1 0 0 0 1 1 1 0 1 1 0 1 1 1 0 0 1 1 0 1 0 0 1 1 0 0 0 1 1 1 0 0
+##  [661] 1 1 1 1 1 1 1 0 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 0 1 0 1 0 1
+##  [694] 0 0 1 1 0 0 0 1 1 0 0 0 0 1 0 0 1 1 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0
+##  [727] 1 1 1 0 1 1 1 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 1 1 1 1 1 1 1 0 1 1 1
+##  [760] 1 1 0 0 0 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0
+##  [793] 1 1 1 1 1 0 1 1 1 0 0 0 1 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 1 0 0 1 1
+##  [826] 1 0 0 0 0 0 1 1 1 0 0 1 1 0 0 1 0 0 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0
+##  [859] 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 0
+##  [892] 1 1 0 0 0 1 0 0 0 1 0 1 1 1 0 0 0 0 1 0 0 1 1 0 1 0 1 1 1 0 1 0 1
+##  [925] 0 1 1 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 1 1 0 1 1 1 0 1 0 0 0 0 1
+##  [958] 1 0 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 0 1 0 1 0 1 1 1 1 0 0 1 0 1 0 1
+##  [991] 1 1 0 1 0 0 1 1 0 0</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="example-binomial-mixture-model.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed - simulating the observed head/tail for individual flips based on the true probability of each coin to fall on Heads/tails</span></span>
+<span id="cb4-2"><a href="example-binomial-mixture-model.html#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> m)</span>
+<span id="cb4-3"><a href="example-binomial-mixture-model.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="example-binomial-mixture-model.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in the observation matrix</span></span>
+<span id="cb4-5"><a href="example-binomial-mixture-model.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){ <span class="co"># for each trial</span></span>
+<span id="cb4-6"><a href="example-binomial-mixture-model.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  pj <span class="ot">=</span> p[z[j]<span class="sc">+</span><span class="dv">1</span>] <span class="co"># assign the corresponding probability of landing heads to pi</span></span>
+<span id="cb4-7"><a href="example-binomial-mixture-model.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note: Why do we need to plus one here?</span></span>
+<span id="cb4-8"><a href="example-binomial-mixture-model.html#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The probability of landing heads for coin z=0 is stored at p[1]</span></span>
+<span id="cb4-9"><a href="example-binomial-mixture-model.html#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The probability of landing heads for coin z=1 is stored at p[2]</span></span>
+<span id="cb4-10"><a href="example-binomial-mixture-model.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  x[j,] <span class="ot">=</span> <span class="fu">rbinom</span>(m, <span class="dv">1</span>, pj) <span class="co"># simulate the flips in an individual trial, with 1 denoting head and 0 denoting tail</span></span>
+<span id="cb4-11"><a href="example-binomial-mixture-model.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Estimation</strong></p>
+<p><em>1st step: pick initial guess of</em> <span class="math inline">\(p_0^{t=0}\)</span> and <span class="math inline">\(p_1^{t=0}\)</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="example-binomial-mixture-model.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s just let R decide our initial guess here! </span></span>
+<span id="cb5-2"><a href="example-binomial-mixture-model.html#cb5-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">initialp =</span> <span class="fu">runif</span>(<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 0.2650827 0.7531283</code></pre>
+<p><em>2nd step: Get the likelihood function of the complete data assuming our current guesses are the true value of the probabilities of landing heads</em></p>
+<p><span class="math display">\[
+\mathbb{P}(X_{11},...,X_{mn}, \textbf{z}\mid p_0^{(t)}, p_1^{(t)}) = \prod_{j=1}^{n}\frac{1}{2}[{p_0^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_0^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{1-z_j} [{p_1^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_1^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{z_j}
+\]</span></p>
+<p><em>3rd step: get the Q-function</em></p>
+<p><span class="math display">\[
+Q(p;p^t) = \mathbb{E}_{\mathbf{z}\mid \mathbf{x}, p^{t}}\log p(\mathbf{x},\mathbf{z}\mid \mathbf{p})
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+Q(p;p^t)
+    &amp;\approx \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &amp;+ \mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+\]</span></p>
+<p>In the video, we mentioned that we are able to calculate the expected value of z for each trial, where z denotes which coin we use for that trial. We calculate it here for later use.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\mathbb{E}_{\mathbf{z}\mid \mathbf{x},\mathbf{p}^{t}}[z_j] = p(z_j=1\mid \sum_{i=1}^{m}X_i, \mathbf{p}^t) \text{ , because } z_j \sim Bernoulli(0.5) \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{\sum_{j=1}^{n} p(\sum_{i=1}^{m} X_i \mid z_j, \mathbf{p}^t)p(z_j)} \text{ , Bayes&#39; Rule } \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)+p(\sum_{i=1}^{m} X_i \mid z_j=0, \mathbf{p}^t)p(z_j=0)} \\
+    &amp;= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p_1^{\sum_{i=1}^{m} X_i}(1-p_1)^{m-\sum_{i=1}^{m} X_i}p(z_j=1)+p_0^{\sum_{i=1}^{m} X_i}(1-p_0)^{m-\sum_{i=1}^{m} X_i}p(z_j=0)} \\
+    &amp;\text{ , because }\sum_{i=1}^{m} X_i \text{ follows binomial distribution}
+\end{aligned}
+\]</span></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="example-binomial-mixture-model.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the expected value of z for each trial</span></span>
+<span id="cb7-2"><a href="example-binomial-mixture-model.html#cb7-2" aria-hidden="true" tabindex="-1"></a>getExpectedZ <span class="ot">=</span> <span class="cf">function</span>(p){</span>
+<span id="cb7-3"><a href="example-binomial-mixture-model.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,n) <span class="co"># initialize a new vector for storing expected sequence of z, since we have n trials, the length of the sequence should be set to n</span></span>
+<span id="cb7-4"><a href="example-binomial-mixture-model.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb7-5"><a href="example-binomial-mixture-model.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    trialsum <span class="ot">=</span> <span class="fu">sum</span>(x[j,]) <span class="co"># get the flip outcomes from the ith trial, store them as a vector named xi </span></span>
+<span id="cb7-6"><a href="example-binomial-mixture-model.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    n1 <span class="ot">=</span> (p[<span class="dv">2</span>] <span class="sc">^</span> trialsum) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">-</span> p[<span class="dv">2</span>]) <span class="sc">^</span> (m <span class="sc">-</span> trialsum)) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="co"># probability of observing the number of heads we observed when we use coin z = 1</span></span>
+<span id="cb7-7"><a href="example-binomial-mixture-model.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    n0 <span class="ot">=</span> (p[<span class="dv">1</span>] <span class="sc">^</span> trialsum) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">-</span> p[<span class="dv">1</span>]) <span class="sc">^</span> (m <span class="sc">-</span> trialsum)) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="co"># probability of observing the number of heads we observed when we use coin z = 0</span></span>
+<span id="cb7-8"><a href="example-binomial-mixture-model.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    E[j] <span class="ot">=</span> n1<span class="sc">/</span>(n1<span class="sc">+</span>n0) <span class="co"># expected value of z at the jth trial</span></span>
+<span id="cb7-9"><a href="example-binomial-mixture-model.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-10"><a href="example-binomial-mixture-model.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(E) <span class="co"># expected sequence of z</span></span>
+<span id="cb7-11"><a href="example-binomial-mixture-model.html#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><em>4th step: Make new guess for</em> <span class="math inline">\(p_0^{t+1}\)</span> and p_1^{t+1}</p>
+<p>Recall that we derived:</p>
+<p><span class="math display">\[
+p_0^{t+1} = \frac{\sum_{j=1}^{n}(1-\mathbb{E}(z_j))\sum_{i=1}^{m}X_{ij}}{m\sum_{j=1}^{n}(1-\mathbb{E}(z_j))}
+\]</span></p>
+<p><span class="math display">\[
+p_1^{t+1} = \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m}X_{ij}}{m\sum_{j=1}^{n}(\mathbb{E}(z_j)}
+\]</span></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="example-binomial-mixture-model.html#cb8-1" aria-hidden="true" tabindex="-1"></a>getNewGuess <span class="ot">=</span> <span class="cf">function</span>(E){</span>
+<span id="cb8-2"><a href="example-binomial-mixture-model.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  p<span class="ot">=</span><span class="fu">rep</span>(<span class="cn">NA</span>, K) <span class="co"># initialize a new vector for storing expected sequence of z, since we have two coins, the length of the s                  equence should be set to 2, which is K</span></span>
+<span id="cb8-3"><a href="example-binomial-mixture-model.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  trialsums <span class="ot">=</span> <span class="fu">rowSums</span>(x) <span class="co"># get the sum of flip outcomes for each trial, store them as a vector named trialsums</span></span>
+<span id="cb8-4"><a href="example-binomial-mixture-model.html#cb8-4" aria-hidden="true" tabindex="-1"></a>                         <span class="co"># Note: suppose we conducted 2 trials and we observed 4 heads in the first trial and 5 heads in the                          second, trialsums = (4,5)</span></span>
+<span id="cb8-5"><a href="example-binomial-mixture-model.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  p[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">-</span>E)<span class="sc">*</span>trialsums)<span class="sc">/</span>(m<span class="sc">*</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">-</span>E)) <span class="co"># calculate new estimate for the probability of landing heads for coin z = 0</span></span>
+<span id="cb8-6"><a href="example-binomial-mixture-model.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  p[<span class="dv">2</span>] <span class="ot">=</span> <span class="fu">sum</span>(E<span class="sc">*</span>trialsums)<span class="sc">/</span>(m<span class="sc">*</span><span class="fu">sum</span>(E)) <span class="co"># calculate new estimate for the probability of landing heads for coin z = 1</span></span>
+<span id="cb8-7"><a href="example-binomial-mixture-model.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p) <span class="co"># return the new set of estimates for this iteration</span></span>
+<span id="cb8-8"><a href="example-binomial-mixture-model.html#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><em>5th step: create the iterative function with a deciding mechanism for whether we continue the iteration process or stop</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="example-binomial-mixture-model.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EM</span></span>
+<span id="cb9-2"><a href="example-binomial-mixture-model.html#cb9-2" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">=</span> <span class="cf">function</span>(initialguess, <span class="at">maxIter=</span><span class="dv">50</span>, <span class="at">tol=</span><span class="fl">1e-5</span>){ <span class="co"># we set default values to maxIter and tol, but try out different values here to see what happens.</span></span>
+<span id="cb9-3"><a href="example-binomial-mixture-model.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  pt<span class="ot">=</span>initialguess</span>
+<span id="cb9-4"><a href="example-binomial-mixture-model.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){ </span>
+<span id="cb9-5"><a href="example-binomial-mixture-model.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">getExpectedZ</span>(pt) <span class="co"># the E step</span></span>
+<span id="cb9-6"><a href="example-binomial-mixture-model.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    pt <span class="ot">=</span> <span class="fu">getNewGuess</span>(E) <span class="co"># the M step</span></span>
+<span id="cb9-7"><a href="example-binomial-mixture-model.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Iteration: &quot;</span>, i, <span class="st">&quot;pt: &quot;</span>,pt,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb9-8"><a href="example-binomial-mixture-model.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(pt) <span class="co"># print the new set of estimates of parameters for every iteration</span></span>
+<span id="cb9-9"><a href="example-binomial-mixture-model.html#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">norm</span>(pt<span class="sc">-</span>p,<span class="at">type=</span><span class="st">&quot;2&quot;</span>) <span class="sc">&lt;</span> tol) <span class="cf">break</span> <span class="co"># if the new estimates are similar enough to the estimates from the last iteration, we stop the process and take the estimates we get from the new iteration as our final estimates</span></span>
+<span id="cb9-10"><a href="example-binomial-mixture-model.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">=</span> pt <span class="co"># Otherwise, we regard this new set of estimates as &quot;previous&quot; and get new estimates based on that</span></span>
+<span id="cb9-11"><a href="example-binomial-mixture-model.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-12"><a href="example-binomial-mixture-model.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pt)</span>
+<span id="cb9-13"><a href="example-binomial-mixture-model.html#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Put our initial guess for p into the function EM to get the EM estimates of <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="example-binomial-mixture-model.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">EM</span>(initialp))</span></code></pre></div>
+<pre><code>## Iteration:  1 pt:  0.4740147 0.8322268 
+## [1] 0.4740147 0.8322268
+## Iteration:  2 pt:  0.5761333 0.8824783 
+## [1] 0.5761333 0.8824783
+## Iteration:  3 pt:  0.6197177 0.9098317 
+## [1] 0.6197177 0.9098317
+## Iteration:  4 pt:  0.6391757 0.9240014 
+## [1] 0.6391757 0.9240014
+## Iteration:  5 pt:  0.648519 0.9315073 
+## [1] 0.6485190 0.9315073
+## Iteration:  6 pt:  0.6533188 0.935579 
+## [1] 0.6533188 0.9355790
+## Iteration:  7 pt:  0.6559 0.9378264 
+## [1] 0.6559000 0.9378264
+## Iteration:  8 pt:  0.6573252 0.9390812 
+## [1] 0.6573252 0.9390812
+## Iteration:  9 pt:  0.658123 0.939787 
+## [1] 0.658123 0.939787
+## Iteration:  10 pt:  0.658573 0.9401857 
+## [1] 0.6585730 0.9401857
+## Iteration:  11 pt:  0.6588277 0.9404117 
+## [1] 0.6588277 0.9404117
+## Iteration:  12 pt:  0.6589721 0.9405398 
+## [1] 0.6589721 0.9405398
+## Iteration:  13 pt:  0.6590542 0.9406126 
+## [1] 0.6590542 0.9406126
+## Iteration:  14 pt:  0.6591008 0.940654 
+## [1] 0.6591008 0.9406540
+## Iteration:  15 pt:  0.6591273 0.9406775 
+## [1] 0.6591273 0.9406775
+## Iteration:  16 pt:  0.6591423 0.9406909 
+## [1] 0.6591423 0.9406909
+## Iteration:  17 pt:  0.6591509 0.9406985 
+## [1] 0.6591509 0.9406985
+## Iteration:  18 pt:  0.6591558 0.9407028 
+## [1] 0.6591558 0.9407028</code></pre>
+<pre><code>## [1] 0.6591558 0.9407028</code></pre>
+<p>Check the TRUE PARAMETERS that we set at the very start:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="example-binomial-mixture-model.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(p)</span></code></pre></div>
+<pre><code>## [1] 0.6563497 0.9495199</code></pre>
+<p>Comparing our EM estimates to the true parameters here, we think they are reasonablly close enough to each other.</p>
+</div>
+<div id="generalized-case-k-coin" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Generalized case (k-coin)<a href="example-binomial-mixture-model.html#generalized-case-k-coin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="example-binomial-mixture-model.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;extraDistr&quot;) # uncommented this line to install the package if you haven&#39;t already</span></span>
+<span id="cb15-2"><a href="example-binomial-mixture-model.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
+<span id="cb15-3"><a href="example-binomial-mixture-model.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="example-binomial-mixture-model.html#cb15-4" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="dv">5</span> <span class="co"># set the number of distinct coins, try different numbers of coins here to see what happens:)</span></span>
+<span id="cb15-5"><a href="example-binomial-mixture-model.html#cb15-5" aria-hidden="true" tabindex="-1"></a>Kplus1 <span class="ot">=</span> K <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb15-6"><a href="example-binomial-mixture-model.html#cb15-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">/</span>Kplus1, <span class="dv">1-1</span><span class="sc">/</span>Kplus1, <span class="dv">1</span><span class="sc">/</span>Kplus1) <span class="co"># the probability of each coin to fall on Heads</span></span>
+<span id="cb15-7"><a href="example-binomial-mixture-model.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the intuition here is we want to scatter their probabilities of landing heads as far enough as possible between 0 and 1</span></span>
+<span id="cb15-8"><a href="example-binomial-mixture-model.html#cb15-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb15-9"><a href="example-binomial-mixture-model.html#cb15-9" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb15-10"><a href="example-binomial-mixture-model.html#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="example-binomial-mixture-model.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent</span></span>
+<span id="cb15-12"><a href="example-binomial-mixture-model.html#cb15-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rcat</span>(n, <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>K, K)) <span class="co"># generating a sequence of length n, with a probability of 1/K of choosing any integer from 1 to K for each of the n spots</span></span>
+<span id="cb15-13"><a href="example-binomial-mixture-model.html#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="example-binomial-mixture-model.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed</span></span>
+<span id="cb15-15"><a href="example-binomial-mixture-model.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Create an empty matrix with n rows and m columns</span></span>
+<span id="cb15-16"><a href="example-binomial-mixture-model.html#cb15-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> m)</span>
+<span id="cb15-17"><a href="example-binomial-mixture-model.html#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="example-binomial-mixture-model.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Fill in the matrix with simulated observations</span></span>
+<span id="cb15-19"><a href="example-binomial-mixture-model.html#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){ </span>
+<span id="cb15-20"><a href="example-binomial-mixture-model.html#cb15-20" aria-hidden="true" tabindex="-1"></a>  pj <span class="ot">=</span> p[z[j]] </span>
+<span id="cb15-21"><a href="example-binomial-mixture-model.html#cb15-21" aria-hidden="true" tabindex="-1"></a>  x[j,] <span class="ot">=</span> <span class="fu">rbinom</span>(m, <span class="dv">1</span>, pj)</span>
+<span id="cb15-22"><a href="example-binomial-mixture-model.html#cb15-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-23"><a href="example-binomial-mixture-model.html#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="example-binomial-mixture-model.html#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># The getExpectedZ step is conventionally called the E-step, which refers to Expectation-step</span></span>
+<span id="cb15-25"><a href="example-binomial-mixture-model.html#cb15-25" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">=</span> <span class="cf">function</span>(p){</span>
+<span id="cb15-26"><a href="example-binomial-mixture-model.html#cb15-26" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> K) </span>
+<span id="cb15-27"><a href="example-binomial-mixture-model.html#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb15-28"><a href="example-binomial-mixture-model.html#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
+<span id="cb15-29"><a href="example-binomial-mixture-model.html#cb15-29" aria-hidden="true" tabindex="-1"></a>      xj <span class="ot">=</span> x[j,]</span>
+<span id="cb15-30"><a href="example-binomial-mixture-model.html#cb15-30" aria-hidden="true" tabindex="-1"></a>      E[j,k] <span class="ot">=</span> p[k]<span class="sc">^</span><span class="fu">sum</span>(xj) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>p[k])<span class="sc">^</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">-</span>xj)</span>
+<span id="cb15-31"><a href="example-binomial-mixture-model.html#cb15-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-32"><a href="example-binomial-mixture-model.html#cb15-32" aria-hidden="true" tabindex="-1"></a>    E[j,] <span class="ot">=</span> E[j,]<span class="sc">/</span><span class="fu">sum</span>(E[j,]) <span class="co"># Scale rows of the matrix to make rowSums one</span></span>
+<span id="cb15-33"><a href="example-binomial-mixture-model.html#cb15-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-34"><a href="example-binomial-mixture-model.html#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(E)</span>
+<span id="cb15-35"><a href="example-binomial-mixture-model.html#cb15-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-36"><a href="example-binomial-mixture-model.html#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-37"><a href="example-binomial-mixture-model.html#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="co"># the getNewGuess step is conventionally called the M-step, which refers to Maximization-step</span></span>
+<span id="cb15-38"><a href="example-binomial-mixture-model.html#cb15-38" aria-hidden="true" tabindex="-1"></a>doM <span class="ot">=</span> <span class="cf">function</span>(E){</span>
+<span id="cb15-39"><a href="example-binomial-mixture-model.html#cb15-39" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, K)</span>
+<span id="cb15-40"><a href="example-binomial-mixture-model.html#cb15-40" aria-hidden="true" tabindex="-1"></a>  xi <span class="ot">=</span> <span class="fu">rowSums</span>(x)</span>
+<span id="cb15-41"><a href="example-binomial-mixture-model.html#cb15-41" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">colSums</span>(E<span class="sc">*</span>xi)<span class="sc">/</span>(m<span class="sc">*</span><span class="fu">colSums</span>(E)) <span class="co"># analogous to the 2-coin example, we will take this formula as known and use it directly here</span></span>
+<span id="cb15-42"><a href="example-binomial-mixture-model.html#cb15-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p)</span>
+<span id="cb15-43"><a href="example-binomial-mixture-model.html#cb15-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-44"><a href="example-binomial-mixture-model.html#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="example-binomial-mixture-model.html#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># The following is exactly the same as in the 2-coin example</span></span>
+<span id="cb15-46"><a href="example-binomial-mixture-model.html#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># EM step</span></span>
+<span id="cb15-47"><a href="example-binomial-mixture-model.html#cb15-47" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">=</span> <span class="cf">function</span>(initialguess, <span class="at">maxIter =</span> <span class="dv">100</span>, <span class="at">tol =</span> <span class="fl">1e-5</span>){</span>
+<span id="cb15-48"><a href="example-binomial-mixture-model.html#cb15-48" aria-hidden="true" tabindex="-1"></a>  pt <span class="ot">=</span> initialguess</span>
+<span id="cb15-49"><a href="example-binomial-mixture-model.html#cb15-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){</span>
+<span id="cb15-50"><a href="example-binomial-mixture-model.html#cb15-50" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">doE</span>(pt)</span>
+<span id="cb15-51"><a href="example-binomial-mixture-model.html#cb15-51" aria-hidden="true" tabindex="-1"></a>    pt <span class="ot">=</span> <span class="fu">doM</span>(E)</span>
+<span id="cb15-52"><a href="example-binomial-mixture-model.html#cb15-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Iteration: &quot;</span>, i, <span class="st">&quot;pt: &quot;</span>, pt, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb15-53"><a href="example-binomial-mixture-model.html#cb15-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">norm</span>(pt<span class="sc">-</span>p, <span class="at">type=</span><span class="st">&quot;2&quot;</span>) <span class="sc">&lt;</span> tol) <span class="cf">break</span></span>
+<span id="cb15-54"><a href="example-binomial-mixture-model.html#cb15-54" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">=</span> pt</span>
+<span id="cb15-55"><a href="example-binomial-mixture-model.html#cb15-55" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-56"><a href="example-binomial-mixture-model.html#cb15-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pt)</span>
+<span id="cb15-57"><a href="example-binomial-mixture-model.html#cb15-57" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-58"><a href="example-binomial-mixture-model.html#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-59"><a href="example-binomial-mixture-model.html#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="co"># set initial guess</span></span>
+<span id="cb15-60"><a href="example-binomial-mixture-model.html#cb15-60" aria-hidden="true" tabindex="-1"></a>initialp <span class="ot">=</span> <span class="fu">runif</span>(K)</span>
+<span id="cb15-61"><a href="example-binomial-mixture-model.html#cb15-61" aria-hidden="true" tabindex="-1"></a>p.final <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">EM</span>(initialp))</span></code></pre></div>
+<pre><code>## Iteration:  1 pt:  0.8565236 0.792371 0.6068438 0.8373582 0.210492 
+## Iteration:  2 pt:  0.3635598 0.2192907 0.1745154 0.3115444 0.7601974 
+## Iteration:  3 pt:  0.8570847 0.7535435 0.649648 0.8458564 0.244055 
+## Iteration:  4 pt:  0.380842 0.1769044 0.1488555 0.3440218 0.7814052 
+## Iteration:  5 pt:  0.8558956 0.7145043 0.6410025 0.8616165 0.2369488 
+## Iteration:  6 pt:  0.3557277 0.1552665 0.1496867 0.3749354 0.7833758 
+## Iteration:  7 pt:  0.8625758 0.6659304 0.6502534 0.8581712 0.2346125 
+## Iteration:  8 pt:  0.3722803 0.1451943 0.1461729 0.3574372 0.7834335 
+## Iteration:  9 pt:  0.8588625 0.6500157 0.6528877 0.8627856 0.229711 
+## Iteration:  10 pt:  0.3556754 0.1455972 0.1451964 0.3686685 0.7808668 
+## Iteration:  11 pt:  0.8627724 0.650215 0.6490227 0.859834 0.2281329 
+## Iteration:  12 pt:  0.3666581 0.1453665 0.1455651 0.3569591 0.7803168 
+## Iteration:  13 pt:  0.8604307 0.6490601 0.6496518 0.8625591 0.2278975 
+## Iteration:  14 pt:  0.3584471 0.1455247 0.1454233 0.3654753 0.7803241 
+## Iteration:  15 pt:  0.8623429 0.6495233 0.6492214 0.8607907 0.2279081 
+## Iteration:  16 pt:  0.364663 0.1454438 0.1454955 0.3595345 0.7803816 
+## Iteration:  17 pt:  0.8610272 0.6493283 0.6494825 0.8621681 0.2279351 
+## Iteration:  18 pt:  0.3602922 0.1454793 0.1454529 0.3640631 0.7804182 
+## Iteration:  19 pt:  0.8620343 0.6494647 0.6493862 0.8611919 0.2279516 
+## Iteration:  20 pt:  0.3636126 0.1454574 0.1454709 0.3608275 0.780438 
+## Iteration:  21 pt:  0.8613095 0.6494163 0.6494563 0.8619331 0.2279605 
+## Iteration:  22 pt:  0.361212 0.1454665 0.1454597 0.3632738 0.7804486 
+## Iteration:  23 pt:  0.861857 0.6494523 0.6494319 0.8613947 0.2279653 
+## Iteration:  24 pt:  0.3630194 0.1454608 0.1454643 0.3614911 0.7804543 
+## Iteration:  25 pt:  0.8614569 0.6494401 0.6494504 0.8617997 0.2279679 
+## Iteration:  26 pt:  0.3616952 0.1454631 0.1454614 0.3628289 0.7804574 
+## Iteration:  27 pt:  0.8617569 0.6494496 0.6494443 0.8615024 0.2279693 
+## Iteration:  28 pt:  0.3626864 0.1454616 0.1454625 0.3618451 0.7804591 
+## Iteration:  29 pt:  0.861536 0.6494465 0.6494492 0.8617248 0.22797 
+## Iteration:  30 pt:  0.3619556 0.1454622 0.1454618 0.36258 0.7804601 
+## Iteration:  31 pt:  0.8617009 0.6494491 0.6494477 0.8615607 0.2279705 
+## Iteration:  32 pt:  0.3625007 0.1454618 0.145462 0.3620372 0.7804606 
+## Iteration:  33 pt:  0.861579 0.6494483 0.649449 0.8616831 0.2279707 
+## Iteration:  34 pt:  0.3620975 0.145462 0.1454618 0.3624416 0.7804608 
+## Iteration:  35 pt:  0.8616698 0.649449 0.6494487 0.8615925 0.2279708 
+## Iteration:  36 pt:  0.3623976 0.1454619 0.1454619 0.3621422 0.780461 
+## Iteration:  37 pt:  0.8616025 0.6494488 0.649449 0.8616599 0.2279709 
+## Iteration:  38 pt:  0.3621753 0.1454619 0.1454619 0.3623649 0.7804611 
+## Iteration:  39 pt:  0.8616526 0.649449 0.6494489 0.86161 0.2279709 
+## Iteration:  40 pt:  0.3623406 0.1454619 0.1454619 0.3621998 0.7804611 
+## Iteration:  41 pt:  0.8616155 0.649449 0.649449 0.8616471 0.227971 
+## Iteration:  42 pt:  0.362218 0.1454619 0.1454619 0.3623225 0.7804612 
+## Iteration:  43 pt:  0.861643 0.649449 0.649449 0.8616196 0.227971 
+## Iteration:  44 pt:  0.3623091 0.1454619 0.1454619 0.3622315 0.7804612 
+## Iteration:  45 pt:  0.8616226 0.649449 0.649449 0.86164 0.227971 
+## Iteration:  46 pt:  0.3622415 0.1454619 0.1454619 0.3622991 0.7804612 
+## Iteration:  47 pt:  0.8616378 0.649449 0.649449 0.8616248 0.227971 
+## Iteration:  48 pt:  0.3622917 0.1454619 0.1454619 0.3622489 0.7804612 
+## Iteration:  49 pt:  0.8616265 0.649449 0.649449 0.8616361 0.227971 
+## Iteration:  50 pt:  0.3622544 0.1454619 0.1454619 0.3622862 0.7804612 
+## Iteration:  51 pt:  0.8616349 0.649449 0.649449 0.8616277 0.227971 
+## Iteration:  52 pt:  0.3622821 0.1454619 0.1454619 0.3622585 0.7804612 
+## Iteration:  53 pt:  0.8616287 0.649449 0.649449 0.861634 0.227971 
+## Iteration:  54 pt:  0.3622616 0.1454619 0.1454619 0.3622791 0.7804612 
+## Iteration:  55 pt:  0.8616333 0.649449 0.649449 0.8616293 0.227971 
+## Iteration:  56 pt:  0.3622768 0.1454619 0.1454619 0.3622638 0.7804612 
+## Iteration:  57 pt:  0.8616298 0.649449 0.649449 0.8616328 0.227971 
+## Iteration:  58 pt:  0.3622655 0.1454619 0.1454619 0.3622751 0.7804612 
+## Iteration:  59 pt:  0.8616324 0.649449 0.649449 0.8616302 0.227971 
+## Iteration:  60 pt:  0.3622739 0.1454619 0.1454619 0.3622667 0.7804612 
+## Iteration:  61 pt:  0.8616305 0.649449 0.649449 0.8616321 0.227971 
+## Iteration:  62 pt:  0.3622676 0.1454619 0.1454619 0.362273 0.7804612 
+## Iteration:  63 pt:  0.8616319 0.649449 0.649449 0.8616307 0.227971 
+## Iteration:  64 pt:  0.3622723 0.1454619 0.1454619 0.3622683 0.7804612 
+## Iteration:  65 pt:  0.8616309 0.649449 0.649449 0.8616318 0.227971 
+## Iteration:  66 pt:  0.3622688 0.1454619 0.1454619 0.3622718 0.7804612 
+## Iteration:  67 pt:  0.8616316 0.649449 0.649449 0.861631 0.227971 
+## Iteration:  68 pt:  0.3622714 0.1454619 0.1454619 0.3622692 0.7804612 
+## Iteration:  69 pt:  0.8616311 0.649449 0.649449 0.8616316 0.227971 
+## Iteration:  70 pt:  0.3622695 0.1454619 0.1454619 0.3622711 0.7804612 
+## Iteration:  71 pt:  0.8616315 0.649449 0.649449 0.8616311 0.227971 
+## Iteration:  72 pt:  0.3622709 0.1454619 0.1454619 0.3622697 0.7804612 
+## Iteration:  73 pt:  0.8616312 0.649449 0.649449 0.8616314 0.227971 
+## Iteration:  74 pt:  0.3622699 0.1454619 0.1454619 0.3622708 0.7804612 
+## Iteration:  75 pt:  0.8616314 0.649449 0.649449 0.8616312 0.227971 
+## Iteration:  76 pt:  0.3622706 0.1454619 0.1454619 0.36227 0.7804612 
+## Iteration:  77 pt:  0.8616312 0.649449 0.649449 0.8616314 0.227971 
+## Iteration:  78 pt:  0.3622701 0.1454619 0.1454619 0.3622706 0.7804612 
+## Iteration:  79 pt:  0.8616314 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  80 pt:  0.3622705 0.1454619 0.1454619 0.3622701 0.7804612 
+## Iteration:  81 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  82 pt:  0.3622702 0.1454619 0.1454619 0.3622704 0.7804612 
+## Iteration:  83 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  84 pt:  0.3622704 0.1454619 0.1454619 0.3622702 0.7804612 
+## Iteration:  85 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  86 pt:  0.3622702 0.1454619 0.1454619 0.3622704 0.7804612 
+## Iteration:  87 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  88 pt:  0.3622704 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  89 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  90 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  91 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  92 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  93 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  94 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  95 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  96 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  97 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  98 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612 
+## Iteration:  99 pt:  0.8616313 0.649449 0.649449 0.8616313 0.227971 
+## Iteration:  100 pt:  0.3622703 0.1454619 0.1454619 0.3622703 0.7804612</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="example-binomial-mixture-model.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print to see the TRUE parameters that we set at the beginning</span></span>
+<span id="cb17-2"><a href="example-binomial-mixture-model.html#cb17-2" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<pre><code>## [1] 0.1666667 0.3333333 0.5000000 0.6666667 0.8333333</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="example-binomial-mixture-model.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print to see our EM estimates for the parameters</span></span>
+<span id="cb19-2"><a href="example-binomial-mixture-model.html#cb19-2" aria-hidden="true" tabindex="-1"></a>p.final</span></code></pre></div>
+<pre><code>## [1] 0.1454619 0.1454619 0.3622703 0.3622703 0.7804612</code></pre>
+<p>Code from <a href="https://www.youtube.com/watch?v=J24CifymPbo" class="uri">https://www.youtube.com/watch?v=J24CifymPbo</a></p>
+</div>
+</div>
+<div id="references-1" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> References:<a href="example-binomial-mixture-model.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://www.colorado.edu/amath/sites/default/files/attached-files/em_algorithm.pdf">Expectation Maximization (EM) Algorithm - colorado.edu</a></p></li>
 <li><p><a href="https://www.youtube.com/watch?v=J24CifymPbo&amp;t=512s">Youtube: Expectation Maximization - 2 - Example: Binomial Mixture Model</a></p></li>
@@ -250,7 +748,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/edit/main/03-Bino.Rmd",
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/edit/main/04-Bino.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -258,7 +756,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/blob/main/03-Bino.Rmd",
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/blob/main/04-Bino.Rmd",
 "text": null
 },
 "download": null,

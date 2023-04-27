@@ -1,0 +1,410 @@
+# Example: Binomial Mixture Model
+
+## Overview of Binomial Mixture Model
+
+A binomial mixture model is a statistical model that allows for the possibility that the observed data is generated from a mixture of two or more binomial distributions. In other words, the model assumes that the data comes from two or more groups or sub-populations, each of which may have a different probability of success for a given binary outcome.
+
+For example, consider a study of the effectiveness of a new medication in treating a disease. The data may consist of the number of patients who respond positively to the medication and the number who do not. If there are two or more sub-populations of patients with different response rates, a binomial mixture model can be used to model the data.
+
+The binomial mixture model is a useful tool for modeling data that comes from multiple sub-populations with different characteristics. It has applications in many areas, including medicine, biology, marketing, and finance.
+
+## Flipping Coins Example Illustrated
+
+### Scenario
+
+Assume we have 2 biased coins indexed $z=0$ and $z=1$ with probability $p_0$ and $p_1$ of landing heads, respectively.
+
+Suppose we randomly pick one of the coins and flip it m times, and do this procedure for $n$ trials, and we observe and record the $m × n$ results: $X_{11}, ..., X_{mn}$, where $X_{ij}$ is the r.v. denoting the outcome of the $i^{th}$ coin flip from the $j^{th}$ trial, with $X_{ij} = 1$ indicating heads and $X_{ij} = 0$ indicating tails.
+
+Then, we have that
+
+$$
+X_i\mid_{z=0} \sim Bernoulli(p_0) 
+$$
+
+$$
+X_i\mid_{z=1} \sim Bernoulli(p_1) 
+$$
+
+Equivalently, 
+
+$$
+\sum_{i=1}^{m}X_i\mid_{z=0} \sim Binomial(m, p_0)
+$$
+
+$$
+\sum_{i=1}^{m}X_i\mid_{z=1} \sim Binomial(m, p_1)
+$$
+
+If the sequence $\{z_j\}$, where $j$ indexing individual trials, is given, we can simply use MLE to estimate $p_0$ and $p_1$ that maximize the probability that we observed the outcomes that we observed.
+
+However, when the sequence $\{z_j\}$ is unknown, we should use the EM algorithm!
+
+
+### Algorithm steps
+
+Following the steps we discussed in the previous video, the complete procedure of deriving the estimates can be summarized as follows.
+
+**Step 1** Pick initial guess: $p_0^{(t=0)}$ and $p_1^{(t=0)}$.
+
+**Step 2** Derive the joint pdf
+
+Recall that we denote the true probability of the coin indexed $z=0$ landing heads to be $p_0$ and the true probability of the coin indexed $z=1$ landing heads to be $p_1$. Assume $p_0 = p_0^{(t)}$ and $p_1 = p_1^{(t)}$. Get the joint pdf as follows.
+    
+$$
+P(X_{11},\cdots, X_{mn}, \mathbf{z}\mid p_0^{(t)}, p_1^{(t)}) = \prod_{j=1}^{n}\frac{1}{2}[{p_0^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_0^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{1-z_j} [{p_1^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_1^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{z_j}
+$$
+    
+**Step 3** Get Q-function using the joint pdf we got in step 2. 
+
+Let $\mathbf{p} = (p_0, p_1)$ and $\mathbf{p}^t = (p_0^t, p_1^t)$. 
+
+Recall the Q-function defined as follow in this specific scenario.
+    
+$$
+Q(p;p^t) = \mathbb{E}_{\mathbf{z}\mid \mathbf{x}, p^{t}}\log p(\mathbf{x},\mathbf{z}\mid \mathbf{p})
+$$
+    
+, where $z$ denotes our missing data, $x$ is the observations.
+
+$$
+\begin{aligned}
+    \log{p(\mathbf{x}, \mathbf{z}\mid p_0, p_1)} 
+    &= n\log{\frac{1}{2}} +\sum_{j=1}^{n}[(1-z_j)\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &+ z_j \log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+$$
+
+Ignore the constant $n\log{\frac{1}{2}}$, then we have 
+
+$$
+\begin{aligned}
+    \log{p(\mathbf{x}, \mathbf{z}\mid p_0, p_1)} \approx \sum_{j=1}^{n}[(1-z_j)\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    + z_j \log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+$$
+
+
+The Q-function can thus be written as follows.
+    
+$$
+\begin{aligned}
+    Q(p;p^t) 
+    &\approx \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &+ \mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+$$
+
+Then, let's calculated the expected value of $\textbf{z}$.
+
+$$
+\begin{aligned}
+    &\mathbb{E}_{\mathbf{z}\mid \mathbf{x},\mathbf{p}^{t}}[z_j] = p(z_j=1\mid \sum_{i=1}^{m}X_i, \mathbf{p}^t) \text{ , because } z_j \sim Bernoulli(0.5) \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{\sum_{j=1}^{n} p(\sum_{i=1}^{m} X_i \mid z_j, \mathbf{p}^t)p(z_j)} \text{ , Bayes' Rule } \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)+p(\sum_{i=1}^{m} X_i \mid z_j=0, \mathbf{p}^t)p(z_j=0)} \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p_1^{\sum_{i=1}^{m} X_i}(1-p_1)^{m-\sum_{i=1}^{m} X_i}p(z_j=1)+p_0^{\sum_{i=1}^{m} X_i}(1-p_0)^{m-\sum_{i=1}^{m} X_i}p(z_j=0)} \\
+    &\text{ , because }\sum_{i=1}^{m} X_i \text{ follows binomial distribution}\\
+\end{aligned}
+$$
+
+We have our initial guess or guess from last iteration for $p_0$, $p_1$, and we have observed $\sum X_i, m$, and we assumed that $P(z_j=1) = P(z_j=0) = \frac{1}{2}$. Thus, we can calculate $\mathbb{E}(z_j)$. Now, we take $\mathbb{E}(z_j)$ as known.
+
+**Step 4** Make new guess $p_0^{t+1}$ and $p_1^{t+1}$. 
+   
+$$
+\mathbf{p}^{t+1} = \underset{\mathbf{p}}{\operatorname{argmax}} Q(\mathbf{p};\mathbf{p}^t)
+$$
+
+To maximize the Q-function $Q(\mathbf{p};\mathbf{p}^{t})$, we take the derivative of it and set it to zero. Since $\mathbf{p}$ contains $p_0$ and $p_1$, we need to take 2 derivatives. 
+
+First, take the derivative of the Q-function with respect to $p_0$ and set it to zero.
+$$
+\begin{aligned}
+   \frac{d Q(\mathbf{p};\mathbf{p}^t)}{d p_0^t} &= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{ \sum_{i=1}^{m}x_{ij}}(1-p_0)^{m- \sum_{i=1}^{m}x_{ij}}]} 
+   \\
+   & \quad\; + \mathbb{E}(z_j) \log{[p_1^{ \sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}] \\
+   &= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]}]\\ 
+   &= \frac{d}{d p_0} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))(\sum_{i=1}^{m}x_{ij}\log{p_0} + (m-\sum_{i=1}^{m}x_{ij})\log(1-p_0)]\\ 
+   &=\sum_{j=1}^{n} (1-\mathbb{E}(z_j))(\frac{\sum_{i=1}^{m} X_{ij}}{p_0} - \frac{m-\sum_{i=1}^{m}X_{ij}}{1-p_0})\\ &\stackrel{set}{=} 0 \\
+\end{aligned}
+$$
+
+Solve the score function to get $\hat{p}_0$.
+
+$$
+\begin{aligned}
+\sum_{j=1}^{n} (1-\mathbb{E}(z_j))(\frac{\sum_{i=1}^{m} X_{ij}}{p_0} - \frac{m-\sum_{i=1}^{m}X_{ij}}{1-p_0}) &\stackrel{set}{=} 0 \\
+\frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij})}{p_0} &= \frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))(m-\sum_{i=1}^{m}x_{ij}))}{1-p_0} \\
+(1-p_0)\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &= p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j))(m-\sum_{i=1}^{m}x_{ij})) \\
+\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) - p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &= mp_0\sum_{j=1}^{n}(1-\mathbb{E}(z_j)) - p_0\sum_{j=1}^{n}((1-\mathbb{E}(z_j)\sum_{i=1}^{m}x_{ij}) \\
+\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij}) &= mp_0\sum_{j=1}^{n}(1-\mathbb{E}(z_j)) \\
+\hat{p}_0 &= \frac{\sum_{j=1}^{n}((1-\mathbb{E}(z_j))\sum_{i=1}^{m}x_{ij})}{m\sum_{j=1}^{n}(1-\mathbb{E}(z_j))}
+\end{aligned}
+$$
+
+
+Next, take the derivative of the Q-function with respect to $p_1$ and set it to zero.
+
+$$
+\begin{aligned}
+   \frac{d Q(\mathbf{p};\mathbf{p}^t)}{d p_1^t} &= \frac{d}{d p_1} \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{ \sum_{i=1}^{m}x_{ij}}(1-p_0)^{m- \sum_{i=1}^{m}x_{ij}}]} 
+   \\
+   & \quad\; + \mathbb{E}(z_j) \log{[p_1^{ \sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}] \\
+   &= \frac{d}{d p_1} \sum_{j=1}^{n}[\mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]\\ 
+   &= \frac{d}{d p_1} \sum_{j=1}^{n}[\mathbb{E}(z_j)(\sum_{i=1}^{m}x_{ij}\log{p_1} + (m-\sum_{i=1}^{m}x_{ij})\log(1-p_1)] \\ 
+   &=\sum_{j=1}^{n} \mathbb{E}(z_j)(\frac{\sum_{i=1}^{m} x_{ij}}{p_1} - \frac{m-\sum_{i=1}^{m}x_{ij}}{1-p_1})\\ &\stackrel{set}{=} 0 \\
+\end{aligned}
+$$
+
+Solve the score function to get $\hat{p}_1$.
+
+$$
+\begin{aligned}
+\sum_{j=1}^{n} \mathbb{E}(z_j)(\frac{\sum_{i=1}^{m} x_{ij}}{p_1} - \frac{m-\sum_{i=1}^{m}x_{ij}}{1-p_1}) &\stackrel{set}{=} 0 \\
+\frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij}}{p_1} &= \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)(m-\sum_{i=1}^{m}x_{ij})}{1-p_1} \\
+(1-p_1)\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &= p_1\sum_{j=1}^{n}\mathbb{E}(z_j)(m-\sum_{i=1}^{m}x_{ij}) \\
+\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} - p_1\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &= mp_1\sum_{j=1}^{n}\mathbb{E}(z_j) - \sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m}x_{ij}\\
+\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij} &= mp_1\sum_{j=1}^{n}\mathbb{E}(z_j) \\
+\hat{p}_1 = \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m} x_{ij}}{m\sum_{j=1}^{n}\mathbb{E}(z_j)}
+\end{aligned}
+$$
+
+We set $p_0^{t+1} = \hat{p}_0$ and $p_1^{t+1} = \hat{p}_1$ to let those estimates be our estimated results for this new iteration.
+
+**Step 5** Condition to stop otherwise keep iterating
+
+If it reaches numerical precision when comparing $\textbf{p}^{t}$ and $\textbf{p}^{t+1}$, we stop the procedure and take the estimates from the last iteration as our results.
+
+Otherwise, let $t=t+1$, and repeat step 2-5 until it reaches numerical precision.
+
+## Implementation in R
+
+### Simplified case (2-coin)
+
+**Set up**
+
+```{r}
+set.seed(455)
+K = 2 # number of coins we have 
+p = runif(K) # the probability of each coin to fall on Heads (TRUE PARAMETER!)
+n = 1000 # number of trials
+m = 10 # number of flips per trial
+# Note here that we are using one single coin for a whole trial, we never change coins within one trial
+```
+
+```{r}
+# Latent - coin sequence - sequence with 0 and 1, where 0 on the ith spot means we are using the z = 0 coin on the ith trial
+(z = rbinom(n,1,0.5))
+```
+
+```{r}
+# Observed - simulating the observed head/tail for individual flips based on the true probability of each coin to fall on Heads/tails
+x = matrix(nrow = n, ncol = m)
+
+# Fill in the observation matrix
+for(j in 1:n){ # for each trial
+  pj = p[z[j]+1] # assign the corresponding probability of landing heads to pi
+  # Note: Why do we need to plus one here?
+      # The probability of landing heads for coin z=0 is stored at p[1]
+      # The probability of landing heads for coin z=1 is stored at p[2]
+  x[j,] = rbinom(m, 1, pj) # simulate the flips in an individual trial, with 1 denoting head and 0 denoting tail
+}
+```
+
+**Estimation**
+
+*1st step: pick initial guess of* $p_0^{t=0}$ and $p_1^{t=0}$
+
+```{r}
+# Let's just let R decide our initial guess here! 
+(initialp = runif(2))
+```
+
+*2nd step: Get the likelihood function of the complete data assuming our current guesses are the true value of the probabilities of landing heads*
+
+$$
+\mathbb{P}(X_{11},...,X_{mn}, \textbf{z}\mid p_0^{(t)}, p_1^{(t)}) = \prod_{j=1}^{n}\frac{1}{2}[{p_0^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_0^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{1-z_j} [{p_1^{(t)}}^{\sum_{i=1}^{m}X_{ij}}{(1-p_1^{(t)})}^{m-\sum_{i=1}^{m}X_{ij}}]^{z_j}
+$$
+
+*3rd step: get the Q-function*
+
+$$
+Q(p;p^t) = \mathbb{E}_{\mathbf{z}\mid \mathbf{x}, p^{t}}\log p(\mathbf{x},\mathbf{z}\mid \mathbf{p})
+$$
+
+$$
+\begin{aligned}
+Q(p;p^t) 
+    &\approx \sum_{j=1}^{n}[(1-\mathbb{E}(z_j))\log{[p_0^{\sum_{i=1}^{m}x_{ij}}(1-p_0)^{m-\sum_{i=1}^{m}x_{ij}}]} \\
+    &+ \mathbb{E}(z_j)\log{[p_1^{\sum_{i=1}^{m}x_{ij}}(1-p_1)^{m-\sum_{i=1}^{m}x_{ij}}]}]
+\end{aligned}
+$$
+
+In the video, we mentioned that we are able to calculate the expected value of z for each trial, where z denotes which coin we use for that trial. We calculate it here for later use.
+
+$$
+\begin{aligned}
+&\mathbb{E}_{\mathbf{z}\mid \mathbf{x},\mathbf{p}^{t}}[z_j] = p(z_j=1\mid \sum_{i=1}^{m}X_i, \mathbf{p}^t) \text{ , because } z_j \sim Bernoulli(0.5) \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{\sum_{j=1}^{n} p(\sum_{i=1}^{m} X_i \mid z_j, \mathbf{p}^t)p(z_j)} \text{ , Bayes' Rule } \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)+p(\sum_{i=1}^{m} X_i \mid z_j=0, \mathbf{p}^t)p(z_j=0)} \\
+    &= \frac{p(\sum_{i=1}^{m} X_i \mid z_j=1, \mathbf{p}^t)p(z_j=1)}{ p_1^{\sum_{i=1}^{m} X_i}(1-p_1)^{m-\sum_{i=1}^{m} X_i}p(z_j=1)+p_0^{\sum_{i=1}^{m} X_i}(1-p_0)^{m-\sum_{i=1}^{m} X_i}p(z_j=0)} \\
+    &\text{ , because }\sum_{i=1}^{m} X_i \text{ follows binomial distribution}
+\end{aligned}
+$$
+
+
+```{r}
+# Calculate the expected value of z for each trial
+getExpectedZ = function(p){
+  E = rep(NA,n) # initialize a new vector for storing expected sequence of z, since we have n trials, the length of the sequence should be set to n
+  for(j in 1:n){
+    trialsum = sum(x[j,]) # get the flip outcomes from the ith trial, store them as a vector named xi 
+    n1 = (p[2] ^ trialsum) * ((1 - p[2]) ^ (m - trialsum)) * (1/2) # probability of observing the number of heads we observed when we use coin z = 1
+    n0 = (p[1] ^ trialsum) * ((1 - p[1]) ^ (m - trialsum)) * (1/2) # probability of observing the number of heads we observed when we use coin z = 0
+    E[j] = n1/(n1+n0) # expected value of z at the jth trial
+  }
+  return(E) # expected sequence of z
+}
+```
+
+*4th step: Make new guess for* $p_0^{t+1}$ and p_1\^{t+1}
+
+Recall that we derived:
+
+$$
+p_0^{t+1} = \frac{\sum_{j=1}^{n}(1-\mathbb{E}(z_j))\sum_{i=1}^{m}X_{ij}}{m\sum_{j=1}^{n}(1-\mathbb{E}(z_j))}
+$$
+
+$$
+p_1^{t+1} = \frac{\sum_{j=1}^{n}\mathbb{E}(z_j)\sum_{i=1}^{m}X_{ij}}{m\sum_{j=1}^{n}(\mathbb{E}(z_j)}
+$$
+
+```{r}
+getNewGuess = function(E){
+  p=rep(NA, K) # initialize a new vector for storing expected sequence of z, since we have two coins, the length of the s                  equence should be set to 2, which is K
+  trialsums = rowSums(x) # get the sum of flip outcomes for each trial, store them as a vector named trialsums
+                         # Note: suppose we conducted 2 trials and we observed 4 heads in the first trial and 5 heads in the                          second, trialsums = (4,5)
+  p[1] = sum((1-E)*trialsums)/(m*sum(1-E)) # calculate new estimate for the probability of landing heads for coin z = 0
+  p[2] = sum(E*trialsums)/(m*sum(E)) # calculate new estimate for the probability of landing heads for coin z = 1
+  return(p) # return the new set of estimates for this iteration
+}
+```
+
+*5th step: create the iterative function with a deciding mechanism for whether we continue the iteration process or stop*
+
+```{r}
+# EM
+EM = function(initialguess, maxIter=50, tol=1e-5){ # we set default values to maxIter and tol, but try out different values here to see what happens.
+  pt=initialguess
+  for(i in 1:maxIter){ 
+    E = getExpectedZ(pt) # the E step
+    pt = getNewGuess(E) # the M step
+    cat("Iteration: ", i, "pt: ",pt,"\n") 
+    print(pt) # print the new set of estimates of parameters for every iteration
+    if(norm(pt-p,type="2") < tol) break # if the new estimates are similar enough to the estimates from the last iteration, we stop the process and take the estimates we get from the new iteration as our final estimates
+    p = pt # Otherwise, we regard this new set of estimates as "previous" and get new estimates based on that
+  }
+  return(pt)
+}
+```
+
+Put our initial guess for p into the function EM to get the EM estimates of $p_0$ and $p_1$:
+
+```{r}
+sort(EM(initialp))
+```
+
+Check the TRUE PARAMETERS that we set at the very start:
+
+```{r}
+sort(p)
+```
+
+Comparing our EM estimates to the true parameters here, we think they are reasonablly close enough to each other.
+
+### Generalized case (k-coin)
+
+```{r}
+#install.packages("extraDistr") # uncommented this line to install the package if you haven't already
+library(extraDistr)
+
+K = 5 # set the number of distinct coins, try different numbers of coins here to see what happens:)
+Kplus1 = K + 1
+p = seq(1/Kplus1, 1-1/Kplus1, 1/Kplus1) # the probability of each coin to fall on Heads
+# the intuition here is we want to scatter their probabilities of landing heads as far enough as possible between 0 and 1
+n = 1000
+m = 100
+
+# Latent
+z = rcat(n, rep(1/K, K)) # generating a sequence of length n, with a probability of 1/K of choosing any integer from 1 to K for each of the n spots
+
+# Observed
+## Create an empty matrix with n rows and m columns
+x = matrix(nrow = n, ncol = m)
+
+## Fill in the matrix with simulated observations
+for(j in 1:n){ 
+  pj = p[z[j]] 
+  x[j,] = rbinom(m, 1, pj)
+}
+
+# The getExpectedZ step is conventionally called the E-step, which refers to Expectation-step
+doE = function(p){
+  E = matrix(nrow = n, ncol = K) 
+  for(j in 1:n){
+    for(k in 1:K){
+      xj = x[j,]
+      E[j,k] = p[k]^sum(xj) + (1-p[k])^sum(1-xj)
+    }
+    E[j,] = E[j,]/sum(E[j,]) # Scale rows of the matrix to make rowSums one
+  }
+  return(E)
+}
+
+# the getNewGuess step is conventionally called the M-step, which refers to Maximization-step
+doM = function(E){
+  p = rep(NA, K)
+  xi = rowSums(x)
+  p = colSums(E*xi)/(m*colSums(E)) # analogous to the 2-coin example, we will take this formula as known and use it directly here
+  return(p)
+}
+
+# The following is exactly the same as in the 2-coin example
+# EM step
+EM = function(initialguess, maxIter = 100, tol = 1e-5){
+  pt = initialguess
+  for(i in 1:maxIter){
+    E = doE(pt)
+    pt = doM(E)
+    cat("Iteration: ", i, "pt: ", pt, "\n")
+    if(norm(pt-p, type="2") < tol) break
+    p = pt
+  }
+  return(pt)
+}
+
+# set initial guess
+initialp = runif(K)
+p.final = sort(EM(initialp))
+
+# print to see the TRUE parameters that we set at the beginning
+p
+
+# print to see our EM estimates for the parameters
+p.final
+
+```
+
+Code from <https://www.youtube.com/watch?v=J24CifymPbo>
+
+
+
+
+## References: 
+
+1. [Expectation Maximization (EM) Algorithm - colorado.edu](https://www.colorado.edu/amath/sites/default/files/attached-files/em_algorithm.pdf) 
+
+2. [Youtube: Expectation Maximization - 2 - Example: Binomial Mixture Model](https://www.youtube.com/watch?v=J24CifymPbo&t=512s)
+
+
+

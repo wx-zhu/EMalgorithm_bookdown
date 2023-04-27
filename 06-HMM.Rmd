@@ -329,3 +329,7 @@ sim = simHMM(hmm, 5000)
 bw = baumWelch(hmm,sim$observation, maxIteration = 10)
 print(bw$hmm)
 ```
+
+## References: 
+
+1. 

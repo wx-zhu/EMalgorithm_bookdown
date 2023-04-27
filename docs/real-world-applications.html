@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 6 Real World Applications | EM Algorithm</title>
+  <meta name="description" content="Topic 6 Real World Applications | EM Algorithm" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 6 Real World Applications | EM Algorithm" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 6 Real World Applications | EM Algorithm" />
+  
+  
+  
+
+<meta name="author" content="Wenxuan Zhu, Jingyi Guan, Sarah Tannert-Lerner" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="application-2-hidden-markov-model.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHORT TITLE HERE</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-em.html"><a href="introduction-to-em.html"><i class="fa fa-check"></i><b>2</b> Introduction to EM</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-em.html"><a href="introduction-to-em.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-algorithm-given-condition-limitation"><i class="fa fa-check"></i><b>2.2</b> EM Algorithm Given Condition &amp; Limitation</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-5-step-version"><i class="fa fa-check"></i><b>2.3</b> EM Steps (5-step version)</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-em.html"><a href="introduction-to-em.html#em-steps-2-key-step-version"><i class="fa fa-check"></i><b>2.4</b> EM Steps (2-key-step version)</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-em.html"><a href="introduction-to-em.html#references"><i class="fa fa-check"></i><b>2.5</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html"><i class="fa fa-check"></i><b>3</b> Example: Binomial Mixture Model</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#overview-of-binomial-mixture-model"><i class="fa fa-check"></i><b>3.1</b> Overview of Binomial Mixture Model</a></li>
+<li class="chapter" data-level="3.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#flipping-coins-example-illustrated"><i class="fa fa-check"></i><b>3.2</b> Flipping Coins Example Illustrated</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#scenario"><i class="fa fa-check"></i><b>3.2.1</b> Scenario</a></li>
+<li class="chapter" data-level="3.2.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#algorithm-steps"><i class="fa fa-check"></i><b>3.2.2</b> Algorithm steps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#implementation-in-r"><i class="fa fa-check"></i><b>3.3</b> Implementation in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#simplified-case-2-coin"><i class="fa fa-check"></i><b>3.3.1</b> Simplified case (2-coin)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#generalized-case-k-coin"><i class="fa fa-check"></i><b>3.3.2</b> Generalized case (k-coin)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="example-binomial-mixture-model.html"><a href="example-binomial-mixture-model.html#references-1"><i class="fa fa-check"></i><b>3.4</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html"><i class="fa fa-check"></i><b>4</b> Application 1: Gaussian Mixture Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#why-using-gmms"><i class="fa fa-check"></i><b>4.1</b> Why using GMMs?</a></li>
+<li class="chapter" data-level="4.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-gmm-using-mle"><i class="fa fa-check"></i><b>4.2</b> Train GMM using MLE</a></li>
+<li class="chapter" data-level="4.3" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#train-simple-gmm-example-using-em"><i class="fa fa-check"></i><b>4.3</b> Train simple GMM example using EM</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#set-up"><i class="fa fa-check"></i><b>4.3.1</b> Set up</a></li>
+<li class="chapter" data-level="4.3.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#em-steps-two-key-step-version"><i class="fa fa-check"></i><b>4.3.2</b> EM steps (Two-key-step version)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#r-code-example"><i class="fa fa-check"></i><b>4.4</b> R code example</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#simple-example-with-2-components-in-1-dimension"><i class="fa fa-check"></i><b>4.4.1</b> Simple example with 2 components in 1 dimension</a></li>
+<li class="chapter" data-level="4.4.2" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#general-case"><i class="fa fa-check"></i><b>4.4.2</b> General case</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="application-1-gaussian-mixture-model.html"><a href="application-1-gaussian-mixture-model.html#references-2"><i class="fa fa-check"></i><b>4.5</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html"><i class="fa fa-check"></i><b>5</b> Application 2: Hidden Markov Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#overview-of-hidden-markov-model"><i class="fa fa-check"></i><b>5.1</b> Overview of Hidden Markov Model</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#markov-chain"><i class="fa fa-check"></i><b>5.1.1</b> Markov Chain</a></li>
+<li class="chapter" data-level="5.1.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hidden-markov-model"><i class="fa fa-check"></i><b>5.1.2</b> Hidden Markov Model</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#baum-welch-algorithm"><i class="fa fa-check"></i><b>5.2</b> Baum-Welch Algorithm</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#intuition"><i class="fa fa-check"></i><b>5.2.1</b> Intuition</a></li>
+<li class="chapter" data-level="5.2.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#algorithm-in-steps"><i class="fa fa-check"></i><b>5.2.2</b> Algorithm in steps</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#implementation-in-r-1"><i class="fa fa-check"></i><b>5.3</b> Implementation in R</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#hmm-package"><i class="fa fa-check"></i><b>5.3.1</b> HMM package</a></li>
+<li class="chapter" data-level="5.3.2" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#revisit-weather-grass-example"><i class="fa fa-check"></i><b>5.3.2</b> Revisit Weather-Grass Example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="application-2-hidden-markov-model.html"><a href="application-2-hidden-markov-model.html#references-3"><i class="fa fa-check"></i><b>5.4</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="real-world-applications.html"><a href="real-world-applications.html"><i class="fa fa-check"></i><b>6</b> Real World Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="real-world-applications.html"><a href="real-world-applications.html#image-segmentation"><i class="fa fa-check"></i><b>6.1</b> Image Segmentation</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="real-world-applications.html"><a href="real-world-applications.html#introduction-1"><i class="fa fa-check"></i><b>6.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.1.2" data-path="real-world-applications.html"><a href="real-world-applications.html#latent-variable"><i class="fa fa-check"></i><b>6.1.2</b> Latent variable</a></li>
+<li class="chapter" data-level="6.1.3" data-path="real-world-applications.html"><a href="real-world-applications.html#why-em"><i class="fa fa-check"></i><b>6.1.3</b> Why EM?</a></li>
+<li class="chapter" data-level="6.1.4" data-path="real-world-applications.html"><a href="real-world-applications.html#example"><i class="fa fa-check"></i><b>6.1.4</b> Example</a></li>
+<li class="chapter" data-level="6.1.5" data-path="real-world-applications.html"><a href="real-world-applications.html#related-work"><i class="fa fa-check"></i><b>6.1.5</b> Related Work</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="real-world-applications.html"><a href="real-world-applications.html#recommendation-systems"><i class="fa fa-check"></i><b>6.2</b> Recommendation Systems:</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="real-world-applications.html"><a href="real-world-applications.html#introduction-2"><i class="fa fa-check"></i><b>6.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2.2" data-path="real-world-applications.html"><a href="real-world-applications.html#latent-variable-1"><i class="fa fa-check"></i><b>6.2.2</b> Latent variable</a></li>
+<li class="chapter" data-level="6.2.3" data-path="real-world-applications.html"><a href="real-world-applications.html#why-em-1"><i class="fa fa-check"></i><b>6.2.3</b> Why EM?</a></li>
+<li class="chapter" data-level="6.2.4" data-path="real-world-applications.html"><a href="real-world-applications.html#example-1"><i class="fa fa-check"></i><b>6.2.4</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EM Algorithm</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="real-world-applications" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Topic 6</span> Real World Applications<a href="real-world-applications.html#real-world-applications" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="image-segmentation" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Image Segmentation<a href="real-world-applications.html#image-segmentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-1" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Introduction<a href="real-world-applications.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Image segmentation is the process of dividing an image into multiple segments or regions, each of which corresponds to a distinct object or part of the image. One of the main challenges in image segmentation is identifying the boundaries between different regions. EM algorithm can be used to segment the image into different regions based on their color, texture, or other properties.</p>
+</div>
+<div id="latent-variable" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Latent variable<a href="real-world-applications.html#latent-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In image segmentation, the latent variable is the label that corresponds to each pixel in the image. We don’t know which label corresponds to each pixel, and we want to estimate the most likely label based on the observed properties of the pixels in the image. The observed data could be the color, texture, or other properties of each pixel.</p>
+</div>
+<div id="why-em" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Why EM?<a href="real-world-applications.html#why-em" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>EM algorithm can be helpful in this case because it provides a way to estimate the most likely label for each pixel based on the observed properties of the pixels and the underlying statistical model. The algorithm works by iteratively estimating the probability of each pixel belonging to each label (the E-step) and then updating the model parameters to maximize the likelihood of the observed data given the estimated labels (the M-step).</p>
+</div>
+<div id="example" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Example<a href="real-world-applications.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One example of using EM algorithm for image segmentation is in medical imaging. In medical imaging, EM can be used to segment tumors or other abnormal structures from normal tissue. The observed data could be the intensity values of the pixels in the image, and the latent variable could be a binary label indicating whether each pixel belongs to the tumor or the normal tissue.</p>
+<p>EM algorithm can estimate the most likely label for each pixel based on the observed intensity values and the underlying statistical model. The resulting segmentation can then be used to assist in diagnosis or treatment planning.</p>
+</div>
+<div id="related-work" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Related Work<a href="real-world-applications.html#related-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There is a paper that applied EM algorithm to image segmentation that we think worth taking time reading.</p>
+<pre><code>Warfield, Simon K., Kelly H. Zou, and William M. Wells. &quot;Validation of image segmentation and expert quality with an expectation-maximization algorithm.&quot; in Proceedings of Fifth International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI), Part I. 2002. 
+
+https://www.researchgate.net/profile/Simon-Warfield/publication/2542618_Validation_of_Image_Segmentation_and_Expert_Quality_with_an_Expectation-Maximization_Algorithm/links/02bfe5140732f38f37000000/Validation-of-Image-Segmentation-and-Expert-Quality-with-an-Expectation-Maximization-Algorithm.pdf</code></pre>
+<p>This paper presents a novel solution for accurately assessing and validating image segmentation algorithms, which is a persistent challenge in the medical image segmentation field. The authors utilizes the Expectation-Maximization algorithm to compute a probabilistic estimate of the “ground truth” segmentation from a group of expert segmentations and provides a measure of the quality of each expert, enabling direct comparison of expert and automated algorithm performance. This approach offers a significant advancement in the field of image segmentation and has the potential to improve the accuracy and precision of segmentation algorithms.</p>
+</div>
+</div>
+<div id="recommendation-systems" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Recommendation Systems:<a href="real-world-applications.html#recommendation-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-2" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Introduction<a href="real-world-applications.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recommendation systems are used to suggest products, services, or content to users based on their preferences or behavior. In many cases, we have a large dataset of user preferences for different items, but not all users have rated all items. EM algorithm can be used to estimate the likelihood that a user would rate a particular item based on the observed ratings of other users with similar preferences.</p>
+</div>
+<div id="latent-variable-1" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Latent variable<a href="real-world-applications.html#latent-variable-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In recommendation systems, the latent variable is the user’s preference for a particular item. We don’t know the user’s preference for each item, and we want to estimate the most likely preference based on the observed ratings of other users with similar preferences. The observed data could be the ratings of different users for different items.</p>
+</div>
+<div id="why-em-1" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Why EM?<a href="real-world-applications.html#why-em-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>EM algorithm can be helpful in this case because it provides a way to estimate the most likely preferences for each user based on the observed ratings and the underlying statistical model. The algorithm works by iteratively estimating the probability of each user preferring each item (the E-step) and then updating the model parameters to maximize the likelihood of the observed data given the estimated preferences (the M-step).</p>
+</div>
+<div id="example-1" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Example<a href="real-world-applications.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One example of using EM algorithm for recommendation systems is in e-commerce. In e-commerce, EM can be used to suggest products to users based on their previous purchases or browsing history. The observed data could be the ratings of different products by different users, and the latent variable could be the user’s preference for each product.</p>
+<p>EM algorithm can estimate the most likely preferences for each user based on the observed ratings and the underlying statistical model. The resulting recommendations can then be used to improve user engagement and sales.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="application-2-hidden-markov-model.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/edit/main/06-Real.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/wx-zhu/Stat455_EM_finalproject/blob/main/06-Real.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
