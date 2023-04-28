@@ -1,26 +1,24 @@
-# Real World Application  
+# Application in Image Segmentation
 
-## Image Segmentation
-
-### Introduction 
+## Introduction 
 
 Image segmentation is the process of dividing an image into multiple segments or regions, each of which corresponds to a distinct object or part of the image. One of the main challenges in image segmentation is identifying the boundaries between different regions. EM algorithm can be used to segment the image into different regions based on their color, texture, or other properties.
 
-### Latent variable
+## Latent variable
 
 In image segmentation, the latent variable is the label that corresponds to each pixel in the image. We don't know which label corresponds to each pixel, and we want to estimate the most likely label based on the observed properties of the pixels in the image. The observed data could be the color, texture, or other properties of each pixel.
 
-### Why EM?
+## Why EM?
 
 EM algorithm can be helpful in this case because it provides a way to estimate the most likely label for each pixel based on the observed properties of the pixels and the underlying statistical model. The algorithm works by iteratively estimating the probability of each pixel belonging to each label (the E-step) and then updating the model parameters to maximize the likelihood of the observed data given the estimated labels (the M-step).
 
-### Example
+## Example
 
 One example of using EM algorithm for image segmentation is in medical imaging. In medical imaging, EM can be used to segment tumors or other abnormal structures from normal tissue. The observed data could be the intensity values of the pixels in the image, and the latent variable could be a binary label indicating whether each pixel belongs to the tumor or the normal tissue.
 
 EM algorithm can estimate the most likely label for each pixel based on the observed intensity values and the underlying statistical model. The resulting segmentation can then be used to assist in diagnosis or treatment planning.
 
-### Related Work
+## Related Work
 
 There is a paper that applied EM algorithm to image segmentation that we think worth taking time reading.
 
