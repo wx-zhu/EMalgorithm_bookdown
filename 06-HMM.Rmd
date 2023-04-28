@@ -332,4 +332,10 @@ print(bw$hmm)
 
 ## References: 
 
-1. 
+1. [HMM package documentation](https://cran.r-project.org/web/packages/HMM/HMM.pdf)
+
+2. [HMM wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model)
+
+
+
+
