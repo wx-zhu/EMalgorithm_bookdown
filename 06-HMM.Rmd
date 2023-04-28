@@ -330,11 +330,22 @@ bw = baumWelch(hmm,sim$observation, maxIteration = 10)
 print(bw$hmm)
 ```
 
+
 ## References: 
 
-1. [HMM package documentation](https://cran.r-project.org/web/packages/HMM/HMM.pdf)
+1. [Baum welch Wikipedia](https://en.wikipedia.org/wiki/Baum%e2%80%93Welch_algorithm)
 
-2. [HMM wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model)
+2. [Gaussian quadrature approximations in mixed hidden Markov models for longitudinal data: A simulation study](https://www.sciencedirect.com/science/article/abs/pii/S0167947315001759) 
+
+3. [HMM package documentation](https://cran.r-project.org/web/packages/HMM/HMM.pdf) 
+
+4. [HMM wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model)
+
+5. [Markov chain](https://en.wikipedia.org/wiki/Markov_chain)
+
+6. [Markov model](https://en.wikipedia.org/wiki/Markov_model)
+
+
 
 
 

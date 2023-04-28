@@ -4,6 +4,10 @@
 
 Image segmentation is the process of dividing an image into multiple segments or regions, each of which corresponds to a distinct object or part of the image. One of the main challenges in image segmentation is identifying the boundaries between different regions. EM algorithm can be used to segment the image into different regions based on their color, texture, or other properties.
 
+```{r, echo=FALSE, fig.align='center', out.width='100%', fig.cap=Image Segmentation using Diffused EM, made by G Boccignone'}
+knitr::include_graphics("image/pic4.png")
+```
+
 ## Latent variable
 
 In image segmentation, the latent variable is the label that corresponds to each pixel in the image. We don't know which label corresponds to each pixel, and we want to estimate the most likely label based on the observed properties of the pixels in the image. The observed data could be the color, texture, or other properties of each pixel.
@@ -27,5 +31,10 @@ There is a paper that applied EM algorithm to image segmentation that we think w
 
 
 This paper presents a novel solution for accurately assessing and validating image segmentation algorithms, which is a persistent challenge in the medical image segmentation field. The authors utilizes the Expectation-Maximization algorithm to compute a probabilistic estimate of the "ground truth" segmentation from a group of expert segmentations and provides a measure of the quality of each expert, enabling direct comparison of expert and automated algorithm performance. This approach offers a significant advancement in the field of image segmentation and has the potential to improve the accuracy and precision of segmentation algorithms.
+
+# References: 
+
+1. [Figure: Image Segmentation](https://ww2.mathworks.cn/matlabcentral/fileexchange/37197-dem-diffused-expectation-maximisation-for-image-segmentation?s_tid=FX_rc2_behav)
+
 
 

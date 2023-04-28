@@ -16,6 +16,11 @@ Assume we have 2 biased coins indexed $z=0$ and $z=1$ with probability $p_0$ and
 
 Suppose we randomly pick one of the coins and flip it m times, and do this procedure for $n$ trials, and we observe and record the $m × n$ results: $X_{11}, ..., X_{mn}$, where $X_{ij}$ is the r.v. denoting the outcome of the $i^{th}$ coin flip from the $j^{th}$ trial, with $X_{ij} = 1$ indicating heads and $X_{ij} = 0$ indicating tails.
 
+
+```{r, echo=FALSE, fig.align='center', out.width='100%'}
+knitr::include_graphics("image/pic3.png")
+```
+
 Then, we have that
 
 $$
