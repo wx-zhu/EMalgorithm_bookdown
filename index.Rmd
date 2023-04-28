@@ -7,5 +7,5 @@ site: bookdown::bookdown_site
 
 # Welcome!
 
-First, we would like to give a big thank you to our professor Kelsey Grinde for bringing this amazing class. Her support and encouragement were invaluable to our learning experience in the class ：）
+First, we would like to give a big thank you to our professor Kelsey Grinde for bringing this amazing class. Her support and encouragement were invaluable to our learning experience in the class :)
 
