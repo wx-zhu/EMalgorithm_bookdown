@@ -1,8 +1,7 @@
 fig:unnamed-chunk-11
 fig:unnamed-chunk-12
 welcome
-real-world-application
-image-segmentation
+application-in-image-segmentation
 introduction
 latent-variable
 why-em
