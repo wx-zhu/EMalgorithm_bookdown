@@ -36,6 +36,10 @@ $$
 \end{align*}
 $$
 
+```{r, echo=FALSE, fig.align='center', out.width='85%'}
+knitr::include_graphics("image/pic5.png")
+```
+
 In informal "mathematical" notation, we can represent this as:
 $$
 \text{Weather States} = \{\text{Sunny}, \text{Cloudy}, \text{Rainy}\}
@@ -77,6 +81,11 @@ $$
 **Hidden Markov Model Intuition**
 
 To illustrate Hidden Markov Model, we can continue with the weather example. Let's assume that we are observing whether the grass is wet or dry every day, but we don't directly observe the weather. That being said, we only observe the effect of the weather on the grass, and we assume whether the grass is wet or dry only depends on the weather that day.
+
+```{r, echo=FALSE, fig.align='center', out.width='85%'}
+knitr::include_graphics("image/pic6.png")
+```
+
 
 $$
 \text{Weather States} = \{\text{Sunny}, \text{Cloudy}, \text{Rainy}\}

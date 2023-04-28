@@ -4,7 +4,7 @@
 
 Suppose we have a dataset with 2 features. When you plot your dataset, it might look like this:
 
-```{r, echo=FALSE, fig.align='center', out.width='100%', fig.cap='A dataset with 2 clusters, made by Maël Fabien'}
+```{r, echo=FALSE, fig.align='center', out.width='80%', fig.cap='A dataset with 2 clusters, made by Maël Fabien'}
 knitr::include_graphics("image/pic1.png")
 ```
 
