@@ -1,5 +1,6 @@
-fig:unnamed-chunk-11
-fig:unnamed-chunk-12
+fig:unnamed-chunk-1
+fig:unnamed-chunk-13
+fig:unnamed-chunk-14
 welcome
 application-in-image-segmentation
 introduction
@@ -7,12 +8,13 @@ latent-variable
 why-em
 example
 related-work
+references
 introduction-to-em
 introduction-1
 em-algorithm-given-condition-limitation
 em-steps-5-step-version
 em-steps-2-key-step-version
-references
+references-1
 example-binomial-mixture-model
 overview-of-binomial-mixture-model
 flipping-coins-example-illustrated
@@ -21,7 +23,7 @@ algorithm-steps
 implementation-in-r
 simplified-case-2-coin
 generalized-case-k-coin
-references-1
+references-2
 application-1-gaussian-mixture-model
 why-using-gmms
 train-gmm-using-mle
@@ -31,7 +33,7 @@ em-steps-two-key-step-version
 r-code-example
 simple-example-with-2-components-in-1-dimension
 general-case
-references-2
+references-3
 application-2-hidden-markov-model
 overview-of-hidden-markov-model
 markov-chain
@@ -42,4 +44,4 @@ algorithm-in-steps
 implementation-in-r-1
 hmm-package
 revisit-weather-grass-example
-references-3
+references-4
