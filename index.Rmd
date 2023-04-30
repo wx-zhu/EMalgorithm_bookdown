@@ -9,3 +9,8 @@ site: bookdown::bookdown_site
 
 First, we would like to give a big thank you to our professor [Kelsey Grinde](https://kegrinde.github.io/) for bringing this amazing class. Her support and encouragement were invaluable to our learning experience in the class :)
 
+```{r, echo=FALSE, fig.align='center', out.width='100%', fig.cap='Intro to EM, made by Sarah'}
+knitr::include_graphics("image/pic7.png")
+```
+
+
