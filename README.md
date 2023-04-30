@@ -6,7 +6,8 @@ Hello everyone! Welcome to the Github repository for our Math/Stat 455 Spring 20
 Our project bookdown showcases the EM algorithm and its applications in image segmentation, as well as its usage in various statistical models such as the Binomial mixture model, Gaussian mixture model, and Hidden Markov model. We aim to provide a clear and concise explanation of the EM algorithm and how it can be used in different contexts.
 
 ## Deployd Website
-You can access our project bookdown via the following link: https://wx-zhu.github.io/Stat455_EM_finalproject/. We hope you find it informative and helpful in your understanding of the EM algorithm.
+You can access our project bookdown via the following link: [https://wx-zhu.github.io/Stat455_EM_finalproject/](https://wx-zhu.github.io/EMalgorithm_bookdown/). We hope you find it informative and helpful in your understanding of the EM algorithm.
+You can access our project bookdown via the following link: . We hope you find it informative and helpful in your understanding of the EM algorithm.
 
 Please feel free to reach out to us with any questions, feedback, or typos you may find. 
 
