@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="why-using-gmms" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Why using GMMs?<a href="application-1-gaussian-mixture-model.html#why-using-gmms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose we have a dataset with 2 features. When you plot your dataset, it might look like this:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
 <img src="image/pic1.png" alt="A dataset with 2 clusters, made by Maël Fabien" width="80%" />
 <p class="caption">
 Figure 5.1: A dataset with 2 clusters, made by Maël Fabien
@@ -240,7 +240,7 @@ Figure 5.1: A dataset with 2 clusters, made by Maël Fabien
 <li><p>Modeling of the distribution for the data and the corresponding parameters.</p></li>
 </ol>
 <p>Usually, when doing clustering, people will think of <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means</a>. But, in fact, K-means is just a special case for Gaussian Mixture Models (GMMs) when using a specific EM algorithm. The following plot shows some differences between K-means and GMMs for clustering. In general, for k-means, the clusters are defined by the data means whereas GMM, clusters are defined by data means and variance modeled as Gaussian (aka Normal distribution).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
 <img src="image/pic2.png" alt="K-Means vs. GMMs for clustering, made by Maël Fabien" width="100%" />
 <p class="caption">
 Figure 5.2: K-Means vs. GMMs for clustering, made by Maël Fabien
@@ -356,69 +356,69 @@ For the calculation below, we use weighed average, where the weights are the pro
 </div>
 <div id="r-code-example" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> R code example<a href="application-1-gaussian-mixture-model.html#r-code-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="application-1-gaussian-mixture-model.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EM: GMM </span></span>
-<span id="cb21-2"><a href="application-1-gaussian-mixture-model.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ks) </span>
-<span id="cb21-3"><a href="application-1-gaussian-mixture-model.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
-<span id="cb21-4"><a href="application-1-gaussian-mixture-model.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
-<span id="cb21-5"><a href="application-1-gaussian-mixture-model.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-6"><a href="application-1-gaussian-mixture-model.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pracma)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="application-1-gaussian-mixture-model.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EM: GMM </span></span>
+<span id="cb25-2"><a href="application-1-gaussian-mixture-model.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ks) </span>
+<span id="cb25-3"><a href="application-1-gaussian-mixture-model.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
+<span id="cb25-4"><a href="application-1-gaussian-mixture-model.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
+<span id="cb25-5"><a href="application-1-gaussian-mixture-model.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-6"><a href="application-1-gaussian-mixture-model.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pracma)</span></code></pre></div>
 <div id="simple-example-with-2-components-in-1-dimension" class="section level3 hasAnchor" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Simple example with 2 components in 1 dimension<a href="application-1-gaussian-mixture-model.html#simple-example-with-2-components-in-1-dimension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="application-1-gaussian-mixture-model.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 dimension, 2 components</span></span>
-<span id="cb22-2"><a href="application-1-gaussian-mixture-model.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="do">## sigma&#39;s, p are known; only estimate mu&#39;s</span></span>
-<span id="cb22-3"><a href="application-1-gaussian-mixture-model.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">247</span>)</span>
-<span id="cb22-4"><a href="application-1-gaussian-mixture-model.html#cb22-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.3</span></span>
-<span id="cb22-5"><a href="application-1-gaussian-mixture-model.html#cb22-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">2000</span></span>
-<span id="cb22-6"><a href="application-1-gaussian-mixture-model.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="application-1-gaussian-mixture-model.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable z</span></span>
-<span id="cb22-8"><a href="application-1-gaussian-mixture-model.html#cb22-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, p)</span>
-<span id="cb22-9"><a href="application-1-gaussian-mixture-model.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="application-1-gaussian-mixture-model.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># observed variables</span></span>
-<span id="cb22-11"><a href="application-1-gaussian-mixture-model.html#cb22-11" aria-hidden="true" tabindex="-1"></a>mu1 <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb22-12"><a href="application-1-gaussian-mixture-model.html#cb22-12" aria-hidden="true" tabindex="-1"></a>sig1<span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
-<span id="cb22-13"><a href="application-1-gaussian-mixture-model.html#cb22-13" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">=</span> <span class="sc">-</span><span class="dv">2</span></span>
-<span id="cb22-14"><a href="application-1-gaussian-mixture-model.html#cb22-14" aria-hidden="true" tabindex="-1"></a>sig0 <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">1</span>)</span>
-<span id="cb22-15"><a href="application-1-gaussian-mixture-model.html#cb22-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(n, mu1, sig1)<span class="sc">*</span>z <span class="sc">+</span> <span class="fu">rnorm</span>(n, mu0, sig0)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>z)</span>
-<span id="cb22-16"><a href="application-1-gaussian-mixture-model.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="application-1-gaussian-mixture-model.html#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data histogram</span></span>
-<span id="cb22-18"><a href="application-1-gaussian-mixture-model.html#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">&quot;#F3B941&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="application-1-gaussian-mixture-model.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step</span></span>
-<span id="cb23-2"><a href="application-1-gaussian-mixture-model.html#cb23-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
-<span id="cb23-3"><a href="application-1-gaussian-mixture-model.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  mu0 <span class="ot">=</span> theta[<span class="dv">1</span>]</span>
-<span id="cb23-4"><a href="application-1-gaussian-mixture-model.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  mu1 <span class="ot">=</span> theta[<span class="dv">2</span>]</span>
-<span id="cb23-5"><a href="application-1-gaussian-mixture-model.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
-<span id="cb23-6"><a href="application-1-gaussian-mixture-model.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb23-7"><a href="application-1-gaussian-mixture-model.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">=</span> <span class="fu">dnorm</span>(x[i], <span class="at">mean =</span> mu1, <span class="at">sd =</span> sig1)<span class="sc">*</span>p</span>
-<span id="cb23-8"><a href="application-1-gaussian-mixture-model.html#cb23-8" aria-hidden="true" tabindex="-1"></a>    b <span class="ot">=</span> <span class="fu">dnorm</span>(x[i], <span class="at">mean =</span> mu0, <span class="at">sd =</span> sig0)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
-<span id="cb23-9"><a href="application-1-gaussian-mixture-model.html#cb23-9" aria-hidden="true" tabindex="-1"></a>    E[i] <span class="ot">=</span> a<span class="sc">/</span>(a<span class="sc">+</span>b)</span>
-<span id="cb23-10"><a href="application-1-gaussian-mixture-model.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-11"><a href="application-1-gaussian-mixture-model.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(E)</span>
-<span id="cb23-12"><a href="application-1-gaussian-mixture-model.html#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-13"><a href="application-1-gaussian-mixture-model.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="application-1-gaussian-mixture-model.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># M step</span></span>
-<span id="cb23-15"><a href="application-1-gaussian-mixture-model.html#cb23-15" aria-hidden="true" tabindex="-1"></a>doM <span class="ot">&lt;-</span> <span class="cf">function</span>(E){</span>
-<span id="cb23-16"><a href="application-1-gaussian-mixture-model.html#cb23-16" aria-hidden="true" tabindex="-1"></a>  theta <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">2</span>)</span>
-<span id="cb23-17"><a href="application-1-gaussian-mixture-model.html#cb23-17" aria-hidden="true" tabindex="-1"></a>  theta[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">-</span>E)<span class="sc">*</span>x) <span class="sc">/</span> <span class="fu">sum</span>(<span class="dv">1</span><span class="sc">-</span>E)</span>
-<span id="cb23-18"><a href="application-1-gaussian-mixture-model.html#cb23-18" aria-hidden="true" tabindex="-1"></a>  theta[<span class="dv">2</span>] <span class="ot">=</span> <span class="fu">sum</span>(E<span class="sc">*</span>x) <span class="sc">/</span> <span class="fu">sum</span>(E)</span>
-<span id="cb23-19"><a href="application-1-gaussian-mixture-model.html#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta)</span>
-<span id="cb23-20"><a href="application-1-gaussian-mixture-model.html#cb23-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-21"><a href="application-1-gaussian-mixture-model.html#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-22"><a href="application-1-gaussian-mixture-model.html#cb23-22" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, <span class="at">maxIter =</span> <span class="dv">50</span>, <span class="at">tol =</span> <span class="fl">1e-5</span>){</span>
-<span id="cb23-23"><a href="application-1-gaussian-mixture-model.html#cb23-23" aria-hidden="true" tabindex="-1"></a>  theta.t <span class="ot">=</span> theta</span>
-<span id="cb23-24"><a href="application-1-gaussian-mixture-model.html#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){</span>
-<span id="cb23-25"><a href="application-1-gaussian-mixture-model.html#cb23-25" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">doE</span>(theta.t)</span>
-<span id="cb23-26"><a href="application-1-gaussian-mixture-model.html#cb23-26" aria-hidden="true" tabindex="-1"></a>    theta.t <span class="ot">=</span> <span class="fu">doM</span>(E)</span>
-<span id="cb23-27"><a href="application-1-gaussian-mixture-model.html#cb23-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Interation: &quot;</span>, i, <span class="st">&quot; pt: &quot;</span>, theta.t, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb23-28"><a href="application-1-gaussian-mixture-model.html#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">norm</span>(theta.t <span class="sc">-</span> theta, <span class="at">type =</span> <span class="st">&quot;2&quot;</span>) <span class="sc">&lt;</span> tol)</span>
-<span id="cb23-29"><a href="application-1-gaussian-mixture-model.html#cb23-29" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
-<span id="cb23-30"><a href="application-1-gaussian-mixture-model.html#cb23-30" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> theta.t</span>
-<span id="cb23-31"><a href="application-1-gaussian-mixture-model.html#cb23-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-32"><a href="application-1-gaussian-mixture-model.html#cb23-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta.t)</span>
-<span id="cb23-33"><a href="application-1-gaussian-mixture-model.html#cb23-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="application-1-gaussian-mixture-model.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial values</span></span>
-<span id="cb24-2"><a href="application-1-gaussian-mixture-model.html#cb24-2" aria-hidden="true" tabindex="-1"></a>theta0 <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb24-3"><a href="application-1-gaussian-mixture-model.html#cb24-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">theta.final =</span> <span class="fu">EM</span>(theta0))</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="application-1-gaussian-mixture-model.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 dimension, 2 components</span></span>
+<span id="cb26-2"><a href="application-1-gaussian-mixture-model.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="do">## sigma&#39;s, p are known; only estimate mu&#39;s</span></span>
+<span id="cb26-3"><a href="application-1-gaussian-mixture-model.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">247</span>)</span>
+<span id="cb26-4"><a href="application-1-gaussian-mixture-model.html#cb26-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fl">0.3</span></span>
+<span id="cb26-5"><a href="application-1-gaussian-mixture-model.html#cb26-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">2000</span></span>
+<span id="cb26-6"><a href="application-1-gaussian-mixture-model.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="application-1-gaussian-mixture-model.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># latent variable z</span></span>
+<span id="cb26-8"><a href="application-1-gaussian-mixture-model.html#cb26-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, p)</span>
+<span id="cb26-9"><a href="application-1-gaussian-mixture-model.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="application-1-gaussian-mixture-model.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># observed variables</span></span>
+<span id="cb26-11"><a href="application-1-gaussian-mixture-model.html#cb26-11" aria-hidden="true" tabindex="-1"></a>mu1 <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb26-12"><a href="application-1-gaussian-mixture-model.html#cb26-12" aria-hidden="true" tabindex="-1"></a>sig1<span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
+<span id="cb26-13"><a href="application-1-gaussian-mixture-model.html#cb26-13" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">=</span> <span class="sc">-</span><span class="dv">2</span></span>
+<span id="cb26-14"><a href="application-1-gaussian-mixture-model.html#cb26-14" aria-hidden="true" tabindex="-1"></a>sig0 <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">1</span>)</span>
+<span id="cb26-15"><a href="application-1-gaussian-mixture-model.html#cb26-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(n, mu1, sig1)<span class="sc">*</span>z <span class="sc">+</span> <span class="fu">rnorm</span>(n, mu0, sig0)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>z)</span>
+<span id="cb26-16"><a href="application-1-gaussian-mixture-model.html#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="application-1-gaussian-mixture-model.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data histogram</span></span>
+<span id="cb26-18"><a href="application-1-gaussian-mixture-model.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">&quot;#F3B941&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="application-1-gaussian-mixture-model.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step</span></span>
+<span id="cb27-2"><a href="application-1-gaussian-mixture-model.html#cb27-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
+<span id="cb27-3"><a href="application-1-gaussian-mixture-model.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  mu0 <span class="ot">=</span> theta[<span class="dv">1</span>]</span>
+<span id="cb27-4"><a href="application-1-gaussian-mixture-model.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  mu1 <span class="ot">=</span> theta[<span class="dv">2</span>]</span>
+<span id="cb27-5"><a href="application-1-gaussian-mixture-model.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb27-6"><a href="application-1-gaussian-mixture-model.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb27-7"><a href="application-1-gaussian-mixture-model.html#cb27-7" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">=</span> <span class="fu">dnorm</span>(x[i], <span class="at">mean =</span> mu1, <span class="at">sd =</span> sig1)<span class="sc">*</span>p</span>
+<span id="cb27-8"><a href="application-1-gaussian-mixture-model.html#cb27-8" aria-hidden="true" tabindex="-1"></a>    b <span class="ot">=</span> <span class="fu">dnorm</span>(x[i], <span class="at">mean =</span> mu0, <span class="at">sd =</span> sig0)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb27-9"><a href="application-1-gaussian-mixture-model.html#cb27-9" aria-hidden="true" tabindex="-1"></a>    E[i] <span class="ot">=</span> a<span class="sc">/</span>(a<span class="sc">+</span>b)</span>
+<span id="cb27-10"><a href="application-1-gaussian-mixture-model.html#cb27-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-11"><a href="application-1-gaussian-mixture-model.html#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(E)</span>
+<span id="cb27-12"><a href="application-1-gaussian-mixture-model.html#cb27-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-13"><a href="application-1-gaussian-mixture-model.html#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="application-1-gaussian-mixture-model.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co"># M step</span></span>
+<span id="cb27-15"><a href="application-1-gaussian-mixture-model.html#cb27-15" aria-hidden="true" tabindex="-1"></a>doM <span class="ot">&lt;-</span> <span class="cf">function</span>(E){</span>
+<span id="cb27-16"><a href="application-1-gaussian-mixture-model.html#cb27-16" aria-hidden="true" tabindex="-1"></a>  theta <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">2</span>)</span>
+<span id="cb27-17"><a href="application-1-gaussian-mixture-model.html#cb27-17" aria-hidden="true" tabindex="-1"></a>  theta[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">-</span>E)<span class="sc">*</span>x) <span class="sc">/</span> <span class="fu">sum</span>(<span class="dv">1</span><span class="sc">-</span>E)</span>
+<span id="cb27-18"><a href="application-1-gaussian-mixture-model.html#cb27-18" aria-hidden="true" tabindex="-1"></a>  theta[<span class="dv">2</span>] <span class="ot">=</span> <span class="fu">sum</span>(E<span class="sc">*</span>x) <span class="sc">/</span> <span class="fu">sum</span>(E)</span>
+<span id="cb27-19"><a href="application-1-gaussian-mixture-model.html#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta)</span>
+<span id="cb27-20"><a href="application-1-gaussian-mixture-model.html#cb27-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-21"><a href="application-1-gaussian-mixture-model.html#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="application-1-gaussian-mixture-model.html#cb27-22" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, <span class="at">maxIter =</span> <span class="dv">50</span>, <span class="at">tol =</span> <span class="fl">1e-5</span>){</span>
+<span id="cb27-23"><a href="application-1-gaussian-mixture-model.html#cb27-23" aria-hidden="true" tabindex="-1"></a>  theta.t <span class="ot">=</span> theta</span>
+<span id="cb27-24"><a href="application-1-gaussian-mixture-model.html#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){</span>
+<span id="cb27-25"><a href="application-1-gaussian-mixture-model.html#cb27-25" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">doE</span>(theta.t)</span>
+<span id="cb27-26"><a href="application-1-gaussian-mixture-model.html#cb27-26" aria-hidden="true" tabindex="-1"></a>    theta.t <span class="ot">=</span> <span class="fu">doM</span>(E)</span>
+<span id="cb27-27"><a href="application-1-gaussian-mixture-model.html#cb27-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Interation: &quot;</span>, i, <span class="st">&quot; pt: &quot;</span>, theta.t, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb27-28"><a href="application-1-gaussian-mixture-model.html#cb27-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">norm</span>(theta.t <span class="sc">-</span> theta, <span class="at">type =</span> <span class="st">&quot;2&quot;</span>) <span class="sc">&lt;</span> tol)</span>
+<span id="cb27-29"><a href="application-1-gaussian-mixture-model.html#cb27-29" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
+<span id="cb27-30"><a href="application-1-gaussian-mixture-model.html#cb27-30" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> theta.t</span>
+<span id="cb27-31"><a href="application-1-gaussian-mixture-model.html#cb27-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-32"><a href="application-1-gaussian-mixture-model.html#cb27-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta.t)</span>
+<span id="cb27-33"><a href="application-1-gaussian-mixture-model.html#cb27-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="application-1-gaussian-mixture-model.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial values</span></span>
+<span id="cb28-2"><a href="application-1-gaussian-mixture-model.html#cb28-2" aria-hidden="true" tabindex="-1"></a>theta0 <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb28-3"><a href="application-1-gaussian-mixture-model.html#cb28-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">theta.final =</span> <span class="fu">EM</span>(theta0))</span></code></pre></div>
 <pre><code>## Interation:  1  pt:  1.300618 -2.042688 
 ## Interation:  2  pt:  1.542635 -2.101853 
 ## Interation:  3  pt:  1.701525 -2.066578 
@@ -442,90 +442,90 @@ For the calculation below, we use weighed average, where the weights are the pro
 ## Interation:  21  pt:  1.982071 -1.990106 
 ## Interation:  22  pt:  1.982078 -1.990104</code></pre>
 <pre><code>## [1]  1.982078 -1.990104</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="application-1-gaussian-mixture-model.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">## estimate p, mu&#39;s and sigma&#39;s </span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="application-1-gaussian-mixture-model.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## estimate p, mu&#39;s and sigma&#39;s </span></span></code></pre></div>
 </div>
 <div id="general-case" class="section level3 hasAnchor" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> General case<a href="application-1-gaussian-mixture-model.html#general-case" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We also include the code for a more general version of EM algorithm in GMM questions for simulation and hand-on further exploration. If you are curious about the calculation for the following general case, look at the second half of the <a href="https://www.youtube.com/watch?v=5SdbnCuzXEo">youtube video</a>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="application-1-gaussian-mixture-model.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## K * 2D Gaussians </span></span>
-<span id="cb28-2"><a href="application-1-gaussian-mixture-model.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">247</span>)</span>
-<span id="cb28-3"><a href="application-1-gaussian-mixture-model.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="application-1-gaussian-mixture-model.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Params </span></span>
-<span id="cb28-5"><a href="application-1-gaussian-mixture-model.html#cb28-5" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb28-6"><a href="application-1-gaussian-mixture-model.html#cb28-6" aria-hidden="true" tabindex="-1"></a>phis <span class="ot">=</span> <span class="fu">rdirichlet</span>(<span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>, K))</span>
-<span id="cb28-7"><a href="application-1-gaussian-mixture-model.html#cb28-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">2</span> <span class="co"># how far apart the centers are</span></span>
-<span id="cb28-8"><a href="application-1-gaussian-mixture-model.html#cb28-8" aria-hidden="true" tabindex="-1"></a>mus <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(j,<span class="sc">-</span>j,<span class="dv">0</span>,j,j,<span class="sc">-</span>j), <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># rmvnorm(K, mean = c(0, 0))</span></span>
-<span id="cb28-9"><a href="application-1-gaussian-mixture-model.html#cb28-9" aria-hidden="true" tabindex="-1"></a>Sigmas <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
-<span id="cb28-10"><a href="application-1-gaussian-mixture-model.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
-<span id="cb28-11"><a href="application-1-gaussian-mixture-model.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb28-12"><a href="application-1-gaussian-mixture-model.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  Sigmas[[k]] <span class="ot">=</span> <span class="fu">cov</span>(mat)</span>
-<span id="cb28-13"><a href="application-1-gaussian-mixture-model.html#cb28-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-14"><a href="application-1-gaussian-mixture-model.html#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="application-1-gaussian-mixture-model.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent </span></span>
-<span id="cb28-16"><a href="application-1-gaussian-mixture-model.html#cb28-16" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rcat</span>(n, phis)</span>
-<span id="cb28-17"><a href="application-1-gaussian-mixture-model.html#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-18"><a href="application-1-gaussian-mixture-model.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed (generated)</span></span>
-<span id="cb28-19"><a href="application-1-gaussian-mixture-model.html#cb28-19" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb28-20"><a href="application-1-gaussian-mixture-model.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb28-21"><a href="application-1-gaussian-mixture-model.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">=</span> z[i]</span>
-<span id="cb28-22"><a href="application-1-gaussian-mixture-model.html#cb28-22" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">=</span> mus[k,]</span>
-<span id="cb28-23"><a href="application-1-gaussian-mixture-model.html#cb28-23" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">=</span> Sigmas[[k]]</span>
-<span id="cb28-24"><a href="application-1-gaussian-mixture-model.html#cb28-24" aria-hidden="true" tabindex="-1"></a>  x[i,] <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> mu, <span class="at">sigma =</span> sigma)</span>
-<span id="cb28-25"><a href="application-1-gaussian-mixture-model.html#cb28-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-26"><a href="application-1-gaussian-mixture-model.html#cb28-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-27"><a href="application-1-gaussian-mixture-model.html#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data</span></span>
-<span id="cb28-28"><a href="application-1-gaussian-mixture-model.html#cb28-28" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">mu =</span> <span class="fu">as.factor</span>(z))</span>
-<span id="cb28-29"><a href="application-1-gaussian-mixture-model.html#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-30"><a href="application-1-gaussian-mixture-model.html#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x[,<span class="dv">1</span>], <span class="at">y =</span> x[,<span class="dv">2</span>], <span class="at">col =</span> mu, <span class="at">fill =</span> mu)) <span class="sc">+</span> </span>
-<span id="cb28-31"><a href="application-1-gaussian-mixture-model.html#cb28-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb28-32"><a href="application-1-gaussian-mixture-model.html#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3B5BA5&quot;</span>, <span class="st">&quot;#E87A5D&quot;</span>, <span class="st">&quot;#F3B941&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb28-33"><a href="application-1-gaussian-mixture-model.html#cb28-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="application-1-gaussian-mixture-model.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step </span></span>
-<span id="cb29-2"><a href="application-1-gaussian-mixture-model.html#cb29-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
-<span id="cb29-3"><a href="application-1-gaussian-mixture-model.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">with</span>(theta, <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(k) phis[[k]]<span class="sc">*</span><span class="fu">dmvnorm</span>(x, mus[[k]], Sigmas[[k]]))))</span>
-<span id="cb29-4"><a href="application-1-gaussian-mixture-model.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  E<span class="sc">/</span><span class="fu">rowSums</span>(E)</span>
-<span id="cb29-5"><a href="application-1-gaussian-mixture-model.html#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-6"><a href="application-1-gaussian-mixture-model.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="application-1-gaussian-mixture-model.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># M step </span></span>
-<span id="cb29-8"><a href="application-1-gaussian-mixture-model.html#cb29-8" aria-hidden="true" tabindex="-1"></a>doM <span class="ot">&lt;-</span> <span class="cf">function</span>(E){</span>
-<span id="cb29-9"><a href="application-1-gaussian-mixture-model.html#cb29-9" aria-hidden="true" tabindex="-1"></a>  phis <span class="ot">=</span> <span class="fu">colMeans</span>(E)</span>
-<span id="cb29-10"><a href="application-1-gaussian-mixture-model.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  covs <span class="ot">=</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(k) <span class="fu">cov.wt</span>(x, E[, k], <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>))</span>
-<span id="cb29-11"><a href="application-1-gaussian-mixture-model.html#cb29-11" aria-hidden="true" tabindex="-1"></a>  mus <span class="ot">=</span> <span class="fu">lapply</span>(covs, <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;center&quot;</span>)</span>
-<span id="cb29-12"><a href="application-1-gaussian-mixture-model.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  sig <span class="ot">=</span> <span class="fu">lapply</span>(covs, <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;cov&quot;</span>)</span>
-<span id="cb29-13"><a href="application-1-gaussian-mixture-model.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mus =</span> mus, <span class="at">Sigmas =</span> sig, <span class="at">phis =</span> phis))</span>
-<span id="cb29-14"><a href="application-1-gaussian-mixture-model.html#cb29-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-15"><a href="application-1-gaussian-mixture-model.html#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-16"><a href="application-1-gaussian-mixture-model.html#cb29-16" aria-hidden="true" tabindex="-1"></a>logLikelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
-<span id="cb29-17"><a href="application-1-gaussian-mixture-model.html#cb29-17" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">=</span> <span class="fu">with</span>(theta, <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(i) phis[i] <span class="sc">*</span> <span class="fu">dmvnorm</span>(x, mus[[i]], Sigmas[[i]]))))</span>
-<span id="cb29-18"><a href="application-1-gaussian-mixture-model.html#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">rowSums</span>(probs)))</span>
-<span id="cb29-19"><a href="application-1-gaussian-mixture-model.html#cb29-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-20"><a href="application-1-gaussian-mixture-model.html#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="application-1-gaussian-mixture-model.html#cb29-21" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, <span class="at">maxIter =</span> <span class="dv">30</span>, <span class="at">tol =</span> <span class="fl">1e-1</span>){</span>
-<span id="cb29-22"><a href="application-1-gaussian-mixture-model.html#cb29-22" aria-hidden="true" tabindex="-1"></a>  theta.t <span class="ot">=</span> theta</span>
-<span id="cb29-23"><a href="application-1-gaussian-mixture-model.html#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){</span>
-<span id="cb29-24"><a href="application-1-gaussian-mixture-model.html#cb29-24" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">doE</span>(theta.t)</span>
-<span id="cb29-25"><a href="application-1-gaussian-mixture-model.html#cb29-25" aria-hidden="true" tabindex="-1"></a>    theta.t <span class="ot">=</span> <span class="fu">doM</span>(E)</span>
-<span id="cb29-26"><a href="application-1-gaussian-mixture-model.html#cb29-26" aria-hidden="true" tabindex="-1"></a>    ll.diff <span class="ot">=</span> <span class="fu">logLikelihood</span>(theta.t) <span class="sc">-</span> <span class="fu">logLikelihood</span>(theta)</span>
-<span id="cb29-27"><a href="application-1-gaussian-mixture-model.html#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Iteration: &quot;</span>, i, <span class="st">&quot; ll differnece: &quot;</span>, ll.diff, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb29-28"><a href="application-1-gaussian-mixture-model.html#cb29-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">abs</span>(ll.diff) <span class="sc">&lt;</span> tol) </span>
-<span id="cb29-29"><a href="application-1-gaussian-mixture-model.html#cb29-29" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
-<span id="cb29-30"><a href="application-1-gaussian-mixture-model.html#cb29-30" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> theta.t</span>
-<span id="cb29-31"><a href="application-1-gaussian-mixture-model.html#cb29-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb29-32"><a href="application-1-gaussian-mixture-model.html#cb29-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta.t)</span>
-<span id="cb29-33"><a href="application-1-gaussian-mixture-model.html#cb29-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="application-1-gaussian-mixture-model.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inital values</span></span>
-<span id="cb30-2"><a href="application-1-gaussian-mixture-model.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb30-3"><a href="application-1-gaussian-mixture-model.html#cb30-3" aria-hidden="true" tabindex="-1"></a>phis0 <span class="ot">=</span> <span class="fu">rdirichlet</span>(<span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>,K))</span>
-<span id="cb30-4"><a href="application-1-gaussian-mixture-model.html#cb30-4" aria-hidden="true" tabindex="-1"></a>mus0 <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
-<span id="cb30-5"><a href="application-1-gaussian-mixture-model.html#cb30-5" aria-hidden="true" tabindex="-1"></a>Sigmas0 <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
-<span id="cb30-6"><a href="application-1-gaussian-mixture-model.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
-<span id="cb30-7"><a href="application-1-gaussian-mixture-model.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb30-8"><a href="application-1-gaussian-mixture-model.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  mus0[[k]] <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">3</span>))</span>
-<span id="cb30-9"><a href="application-1-gaussian-mixture-model.html#cb30-9" aria-hidden="true" tabindex="-1"></a>  Sigmas0[[k]] <span class="ot">=</span> <span class="fu">cov</span>(mat)</span>
-<span id="cb30-10"><a href="application-1-gaussian-mixture-model.html#cb30-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-11"><a href="application-1-gaussian-mixture-model.html#cb30-11" aria-hidden="true" tabindex="-1"></a>theta0 <span class="ot">=</span> <span class="fu">list</span>(<span class="at">mus =</span> mus0, <span class="at">Sigmas =</span> Sigmas0, <span class="at">phis =</span> phis0)</span>
-<span id="cb30-12"><a href="application-1-gaussian-mixture-model.html#cb30-12" aria-hidden="true" tabindex="-1"></a>(<span class="at">theta.final =</span> <span class="fu">EM</span>(theta0))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="application-1-gaussian-mixture-model.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## K * 2D Gaussians </span></span>
+<span id="cb32-2"><a href="application-1-gaussian-mixture-model.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">247</span>)</span>
+<span id="cb32-3"><a href="application-1-gaussian-mixture-model.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="application-1-gaussian-mixture-model.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Params </span></span>
+<span id="cb32-5"><a href="application-1-gaussian-mixture-model.html#cb32-5" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb32-6"><a href="application-1-gaussian-mixture-model.html#cb32-6" aria-hidden="true" tabindex="-1"></a>phis <span class="ot">=</span> <span class="fu">rdirichlet</span>(<span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>, K))</span>
+<span id="cb32-7"><a href="application-1-gaussian-mixture-model.html#cb32-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">2</span> <span class="co"># how far apart the centers are</span></span>
+<span id="cb32-8"><a href="application-1-gaussian-mixture-model.html#cb32-8" aria-hidden="true" tabindex="-1"></a>mus <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(j,<span class="sc">-</span>j,<span class="dv">0</span>,j,j,<span class="sc">-</span>j), <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># rmvnorm(K, mean = c(0, 0))</span></span>
+<span id="cb32-9"><a href="application-1-gaussian-mixture-model.html#cb32-9" aria-hidden="true" tabindex="-1"></a>Sigmas <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
+<span id="cb32-10"><a href="application-1-gaussian-mixture-model.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
+<span id="cb32-11"><a href="application-1-gaussian-mixture-model.html#cb32-11" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb32-12"><a href="application-1-gaussian-mixture-model.html#cb32-12" aria-hidden="true" tabindex="-1"></a>  Sigmas[[k]] <span class="ot">=</span> <span class="fu">cov</span>(mat)</span>
+<span id="cb32-13"><a href="application-1-gaussian-mixture-model.html#cb32-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-14"><a href="application-1-gaussian-mixture-model.html#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="application-1-gaussian-mixture-model.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent </span></span>
+<span id="cb32-16"><a href="application-1-gaussian-mixture-model.html#cb32-16" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rcat</span>(n, phis)</span>
+<span id="cb32-17"><a href="application-1-gaussian-mixture-model.html#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="application-1-gaussian-mixture-model.html#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed (generated)</span></span>
+<span id="cb32-19"><a href="application-1-gaussian-mixture-model.html#cb32-19" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb32-20"><a href="application-1-gaussian-mixture-model.html#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb32-21"><a href="application-1-gaussian-mixture-model.html#cb32-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">=</span> z[i]</span>
+<span id="cb32-22"><a href="application-1-gaussian-mixture-model.html#cb32-22" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">=</span> mus[k,]</span>
+<span id="cb32-23"><a href="application-1-gaussian-mixture-model.html#cb32-23" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">=</span> Sigmas[[k]]</span>
+<span id="cb32-24"><a href="application-1-gaussian-mixture-model.html#cb32-24" aria-hidden="true" tabindex="-1"></a>  x[i,] <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> mu, <span class="at">sigma =</span> sigma)</span>
+<span id="cb32-25"><a href="application-1-gaussian-mixture-model.html#cb32-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-26"><a href="application-1-gaussian-mixture-model.html#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="application-1-gaussian-mixture-model.html#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data</span></span>
+<span id="cb32-28"><a href="application-1-gaussian-mixture-model.html#cb32-28" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">mu =</span> <span class="fu">as.factor</span>(z))</span>
+<span id="cb32-29"><a href="application-1-gaussian-mixture-model.html#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="application-1-gaussian-mixture-model.html#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x[,<span class="dv">1</span>], <span class="at">y =</span> x[,<span class="dv">2</span>], <span class="at">col =</span> mu, <span class="at">fill =</span> mu)) <span class="sc">+</span> </span>
+<span id="cb32-31"><a href="application-1-gaussian-mixture-model.html#cb32-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-32"><a href="application-1-gaussian-mixture-model.html#cb32-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3B5BA5&quot;</span>, <span class="st">&quot;#E87A5D&quot;</span>, <span class="st">&quot;#F3B941&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb32-33"><a href="application-1-gaussian-mixture-model.html#cb32-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="application-1-gaussian-mixture-model.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step </span></span>
+<span id="cb33-2"><a href="application-1-gaussian-mixture-model.html#cb33-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
+<span id="cb33-3"><a href="application-1-gaussian-mixture-model.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">with</span>(theta, <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(k) phis[[k]]<span class="sc">*</span><span class="fu">dmvnorm</span>(x, mus[[k]], Sigmas[[k]]))))</span>
+<span id="cb33-4"><a href="application-1-gaussian-mixture-model.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  E<span class="sc">/</span><span class="fu">rowSums</span>(E)</span>
+<span id="cb33-5"><a href="application-1-gaussian-mixture-model.html#cb33-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-6"><a href="application-1-gaussian-mixture-model.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="application-1-gaussian-mixture-model.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># M step </span></span>
+<span id="cb33-8"><a href="application-1-gaussian-mixture-model.html#cb33-8" aria-hidden="true" tabindex="-1"></a>doM <span class="ot">&lt;-</span> <span class="cf">function</span>(E){</span>
+<span id="cb33-9"><a href="application-1-gaussian-mixture-model.html#cb33-9" aria-hidden="true" tabindex="-1"></a>  phis <span class="ot">=</span> <span class="fu">colMeans</span>(E)</span>
+<span id="cb33-10"><a href="application-1-gaussian-mixture-model.html#cb33-10" aria-hidden="true" tabindex="-1"></a>  covs <span class="ot">=</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(k) <span class="fu">cov.wt</span>(x, E[, k], <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>))</span>
+<span id="cb33-11"><a href="application-1-gaussian-mixture-model.html#cb33-11" aria-hidden="true" tabindex="-1"></a>  mus <span class="ot">=</span> <span class="fu">lapply</span>(covs, <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;center&quot;</span>)</span>
+<span id="cb33-12"><a href="application-1-gaussian-mixture-model.html#cb33-12" aria-hidden="true" tabindex="-1"></a>  sig <span class="ot">=</span> <span class="fu">lapply</span>(covs, <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;cov&quot;</span>)</span>
+<span id="cb33-13"><a href="application-1-gaussian-mixture-model.html#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mus =</span> mus, <span class="at">Sigmas =</span> sig, <span class="at">phis =</span> phis))</span>
+<span id="cb33-14"><a href="application-1-gaussian-mixture-model.html#cb33-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-15"><a href="application-1-gaussian-mixture-model.html#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="application-1-gaussian-mixture-model.html#cb33-16" aria-hidden="true" tabindex="-1"></a>logLikelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
+<span id="cb33-17"><a href="application-1-gaussian-mixture-model.html#cb33-17" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">=</span> <span class="fu">with</span>(theta, <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(i) phis[i] <span class="sc">*</span> <span class="fu">dmvnorm</span>(x, mus[[i]], Sigmas[[i]]))))</span>
+<span id="cb33-18"><a href="application-1-gaussian-mixture-model.html#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">log</span>(<span class="fu">rowSums</span>(probs)))</span>
+<span id="cb33-19"><a href="application-1-gaussian-mixture-model.html#cb33-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-20"><a href="application-1-gaussian-mixture-model.html#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="application-1-gaussian-mixture-model.html#cb33-21" aria-hidden="true" tabindex="-1"></a>EM <span class="ot">&lt;-</span> <span class="cf">function</span>(theta, <span class="at">maxIter =</span> <span class="dv">30</span>, <span class="at">tol =</span> <span class="fl">1e-1</span>){</span>
+<span id="cb33-22"><a href="application-1-gaussian-mixture-model.html#cb33-22" aria-hidden="true" tabindex="-1"></a>  theta.t <span class="ot">=</span> theta</span>
+<span id="cb33-23"><a href="application-1-gaussian-mixture-model.html#cb33-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>maxIter){</span>
+<span id="cb33-24"><a href="application-1-gaussian-mixture-model.html#cb33-24" aria-hidden="true" tabindex="-1"></a>    E <span class="ot">=</span> <span class="fu">doE</span>(theta.t)</span>
+<span id="cb33-25"><a href="application-1-gaussian-mixture-model.html#cb33-25" aria-hidden="true" tabindex="-1"></a>    theta.t <span class="ot">=</span> <span class="fu">doM</span>(E)</span>
+<span id="cb33-26"><a href="application-1-gaussian-mixture-model.html#cb33-26" aria-hidden="true" tabindex="-1"></a>    ll.diff <span class="ot">=</span> <span class="fu">logLikelihood</span>(theta.t) <span class="sc">-</span> <span class="fu">logLikelihood</span>(theta)</span>
+<span id="cb33-27"><a href="application-1-gaussian-mixture-model.html#cb33-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Iteration: &quot;</span>, i, <span class="st">&quot; ll differnece: &quot;</span>, ll.diff, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb33-28"><a href="application-1-gaussian-mixture-model.html#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">abs</span>(ll.diff) <span class="sc">&lt;</span> tol) </span>
+<span id="cb33-29"><a href="application-1-gaussian-mixture-model.html#cb33-29" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb33-30"><a href="application-1-gaussian-mixture-model.html#cb33-30" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> theta.t</span>
+<span id="cb33-31"><a href="application-1-gaussian-mixture-model.html#cb33-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb33-32"><a href="application-1-gaussian-mixture-model.html#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(theta.t)</span>
+<span id="cb33-33"><a href="application-1-gaussian-mixture-model.html#cb33-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="application-1-gaussian-mixture-model.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inital values</span></span>
+<span id="cb34-2"><a href="application-1-gaussian-mixture-model.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb34-3"><a href="application-1-gaussian-mixture-model.html#cb34-3" aria-hidden="true" tabindex="-1"></a>phis0 <span class="ot">=</span> <span class="fu">rdirichlet</span>(<span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>,K))</span>
+<span id="cb34-4"><a href="application-1-gaussian-mixture-model.html#cb34-4" aria-hidden="true" tabindex="-1"></a>mus0 <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
+<span id="cb34-5"><a href="application-1-gaussian-mixture-model.html#cb34-5" aria-hidden="true" tabindex="-1"></a>Sigmas0 <span class="ot">=</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, K)</span>
+<span id="cb34-6"><a href="application-1-gaussian-mixture-model.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
+<span id="cb34-7"><a href="application-1-gaussian-mixture-model.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb34-8"><a href="application-1-gaussian-mixture-model.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  mus0[[k]] <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">3</span>))</span>
+<span id="cb34-9"><a href="application-1-gaussian-mixture-model.html#cb34-9" aria-hidden="true" tabindex="-1"></a>  Sigmas0[[k]] <span class="ot">=</span> <span class="fu">cov</span>(mat)</span>
+<span id="cb34-10"><a href="application-1-gaussian-mixture-model.html#cb34-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-11"><a href="application-1-gaussian-mixture-model.html#cb34-11" aria-hidden="true" tabindex="-1"></a>theta0 <span class="ot">=</span> <span class="fu">list</span>(<span class="at">mus =</span> mus0, <span class="at">Sigmas =</span> Sigmas0, <span class="at">phis =</span> phis0)</span>
+<span id="cb34-12"><a href="application-1-gaussian-mixture-model.html#cb34-12" aria-hidden="true" tabindex="-1"></a>(<span class="at">theta.final =</span> <span class="fu">EM</span>(theta0))</span></code></pre></div>
 <pre><code>## Iteration:  1  ll differnece:  27206.85 
 ## Iteration:  2  ll differnece:  195.7352 
 ## Iteration:  3  ll differnece:  124.3022 
