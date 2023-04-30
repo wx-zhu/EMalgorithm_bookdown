@@ -1,4 +1,4 @@
-# EM Algorithm - Capstone Project
+# EM Algorithm - Bookdown
 
 ## About The Project
 Hello everyone! Welcome to the Github repository for our Math/Stat 455 Spring 2023 capstone project on the Expectation-Maximization (EM) algorithm. Our team consists of Wenxuan Zhu, Jingyi Guan, and Sarah Tannert-Lerner.
