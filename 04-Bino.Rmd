@@ -325,7 +325,33 @@ Check the TRUE PARAMETERS that we set at the very start:
 sort(p)
 ```
 
-Comparing our EM estimates to the true parameters here, we think they are reasonablly close enough to each other.
+Comparing our EM estimates to the true parameters here, we think they are reasonably close enough to each other.
+
+Now we can also think about how the EM algorithm uses the E vector in our code. Each time we run the iteration, we make a new E vector, which is our guess as to what the latent data is. 
+
+This code chunk prints out the first 10 spots of our first 5 E vectors, what do the numbers in the vectors represent?
+
+```{r}
+# EM
+EM2 = function(initialguess, maxIter=50, tol=1e-5){ # we set default values to maxIter and tol, but try out different values here to see what happens.
+  pt=initialguess
+  for(i in 1:5){ 
+    E = getExpectedZ(pt)# the E step, what does this function take in? what vector does it use to get E(Z)?
+    cat("Iteration: ", i, "E: ",E[1:10], sep = "\n")
+    pt = getNewGuess(E) # do the M step
+    # what does this function NEED to make its p estimate
+    # print the new set of estimates of parameters for every iteration
+    if(norm(pt-p,type="2") < tol) break # if the new estimates are similar enough to the estimates from the last iteration, we stop the process and take the estimates we get from the new iteration as our final estimates
+    p = pt # Otherwise, we regard this new set of estimates as "previous" and get new estimates based on that
+  }
+  return(pt)
+}
+```
+
+```{r}
+EM2(initialp)
+```
+
 
 ### Generalized case (k-coin)
 
