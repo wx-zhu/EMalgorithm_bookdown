@@ -61,7 +61,7 @@ In this case (and with our assumptions above), the sequence of the weather state
 Mathematically, we can denote a Markov chain by
 
 $$
-X=(X_n)_{n\in\mathbb{N}} = (X_0, X_1, X_2,...)
+X=(X_n)_{n\in\mathbb{N}} = (X_1, X_2,...)
 $$
 
 where at each timestamp the process takes its values in a discrete set $E$ such that
