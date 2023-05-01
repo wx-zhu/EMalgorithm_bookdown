@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">EM Algorithm :)</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="why-using-gmms" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Why using GMMs?<a href="application-1-gaussian-mixture-model.html#why-using-gmms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose we have a dataset with 2 features. When you plot your dataset, it might look like this:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="image/pic1.png" alt="A dataset with 2 clusters, made by Maël Fabien" width="80%" />
 <p class="caption">
 Figure 5.1: A dataset with 2 clusters, made by Maël Fabien
@@ -240,7 +240,7 @@ Figure 5.1: A dataset with 2 clusters, made by Maël Fabien
 <li><p>Modeling of the distribution for the data and the corresponding parameters.</p></li>
 </ol>
 <p>Usually, when doing clustering, people will think of <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means</a>. But, in fact, K-means is just a special case for Gaussian Mixture Models (GMMs) when using a specific EM algorithm. The following plot shows some differences between K-means and GMMs for clustering. In general, for k-means, the clusters are defined by the data means whereas GMM, clusters are defined by data means and variance modeled as Gaussian (aka Normal distribution).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
 <img src="image/pic2.png" alt="K-Means vs. GMMs for clustering, made by Maël Fabien" width="100%" />
 <p class="caption">
 Figure 5.2: K-Means vs. GMMs for clustering, made by Maël Fabien
@@ -382,7 +382,7 @@ For the calculation below, we use weighed average, where the weights are the pro
 <span id="cb26-16"><a href="application-1-gaussian-mixture-model.html#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-17"><a href="application-1-gaussian-mixture-model.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data histogram</span></span>
 <span id="cb26-18"><a href="application-1-gaussian-mixture-model.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">&quot;#F3B941&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="application-1-gaussian-mixture-model.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step</span></span>
 <span id="cb27-2"><a href="application-1-gaussian-mixture-model.html#cb27-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
 <span id="cb27-3"><a href="application-1-gaussian-mixture-model.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  mu0 <span class="ot">=</span> theta[<span class="dv">1</span>]</span>
@@ -480,7 +480,7 @@ For the calculation below, we use weighed average, where the weights are the pro
 <span id="cb32-31"><a href="application-1-gaussian-mixture-model.html#cb32-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb32-32"><a href="application-1-gaussian-mixture-model.html#cb32-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3B5BA5&quot;</span>, <span class="st">&quot;#E87A5D&quot;</span>, <span class="st">&quot;#F3B941&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb32-33"><a href="application-1-gaussian-mixture-model.html#cb32-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="application-1-gaussian-mixture-model.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E step </span></span>
 <span id="cb33-2"><a href="application-1-gaussian-mixture-model.html#cb33-2" aria-hidden="true" tabindex="-1"></a>doE <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
 <span id="cb33-3"><a href="application-1-gaussian-mixture-model.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  E <span class="ot">=</span> <span class="fu">with</span>(theta, <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>K, <span class="cf">function</span>(k) phis[[k]]<span class="sc">*</span><span class="fu">dmvnorm</span>(x, mus[[k]], Sigmas[[k]]))))</span>
