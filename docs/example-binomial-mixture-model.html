@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 4 Example: Binomial Mixture Model | EM Algorithm</title>
   <meta name="description" content="Topic 4 Example: Binomial Mixture Model | EM Algorithm" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 4 Example: Binomial Mixture Model | EM Algorithm" />
   <meta property="og:type" content="book" />
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -372,35 +376,37 @@ Q(p;p^t) = \mathbb{E}_{\mathbf{z}\mid \mathbf{x}, p^{t}}\log p(\mathbf{x},\mathb
 <span id="cb1-6"><a href="example-binomial-mixture-model.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Note here that we are using one single coin for a whole trial, we never change coins within one trial</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="example-binomial-mixture-model.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent - coin sequence - sequence with 0 and 1, where 0 on the ith spot means we are using the z = 0 coin on the ith trial</span></span>
 <span id="cb2-2"><a href="example-binomial-mixture-model.html#cb2-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> <span class="fu">rbinom</span>(n,<span class="dv">1</span>,<span class="fl">0.5</span>))</span></code></pre></div>
-<pre><code>##    [1] 0 1 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 0 1 1 0 1 1 1 1 0 1 0
-##   [36] 1 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1 1 1 1 0 1 0 1
-##   [71] 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1 1 0 1 0 0 1
-##  [106] 1 0 1 0 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1 0
-##  [141] 1 0 0 0 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 1
-##  [176] 0 1 0 0 0 0 1 1 0 1 1 0 0 0 0 0 1 1 0 0 0 1 1 1 1 1 0 1 1 1 0 0 0 1 0
-##  [211] 0 1 0 1 1 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 1 0 1 1 1 1 0 0 0 1 1 0 0 0 0
-##  [246] 0 1 0 1 0 0 0 1 1 1 0 0 0 0 1 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 1 1 0 1 1
-##  [281] 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 1 1 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0
-##  [316] 0 1 1 0 1 0 1 1 1 0 0 1 0 0 1 1 1 1 1 1 0 1 1 1 0 1 0 0 1 1 0 0 0 0 0
-##  [351] 0 1 0 1 1 1 0 1 1 0 0 0 0 1 1 1 1 0 0 0 1 1 1 1 1 0 0 0 1 0 0 1 0 1 0
-##  [386] 0 1 0 0 0 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1
-##  [421] 0 1 1 1 1 0 0 1 1 0 1 1 1 1 0 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 1 1 0 0 1
-##  [456] 0 0 0 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 1 0 0 0 1 1 1 0 0 1 1 0 1 1 0 1 1
-##  [491] 0 1 1 1 0 0 0 1 0 1 0 1 1 1 1 1 0 1 0 1 0 1 0 0 0 0 1 1 0 1 0 0 0 1 1
-##  [526] 0 0 0 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 0 1 0 1 1 0 1 0 0 0 1 1 0 1 0 0
-##  [561] 1 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 1 0 0
-##  [596] 1 0 1 1 0 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 1 0 1 1 0
-##  [631] 0 0 1 1 1 0 1 1 0 1 1 1 0 0 1 1 0 1 0 0 1 1 0 0 0 1 1 1 0 0 1 1 1 1 1
-##  [666] 1 1 0 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 0 1 0 1 0 1 0 0 1 1 0 0 0
-##  [701] 1 1 0 0 0 0 1 0 0 1 1 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0 1 1 1 0 1 1 1 1 1
-##  [736] 0 0 0 1 0 0 1 1 0 1 0 0 0 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0 0 1 0 1 0 1 0
-##  [771] 1 0 1 0 0 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 1
-##  [806] 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 0 0 1 1 1 0 0 1 1 0 0
-##  [841] 1 0 0 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 1
-##  [876] 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 1 0 1 1 1 0 0 0 0 1
-##  [911] 0 0 1 1 0 1 0 1 1 1 0 1 0 1 0 1 1 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 1
-##  [946] 1 0 1 1 1 0 1 0 0 0 0 1 1 0 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 0 1 0 1 0 1
-##  [981] 1 1 1 0 0 1 0 1 0 1 1 1 0 1 0 0 1 1 0 0</code></pre>
+<pre><code>##    [1] 0 1 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 0 1 1 0 1 1 1 1 0
+##   [34] 1 0 1 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1 1 1 1
+##   [67] 0 1 0 1 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1
+##  [100] 1 0 1 0 0 1 1 0 1 0 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 1 1 1 0 1 1 1
+##  [133] 1 0 1 0 1 1 1 0 1 0 0 0 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0
+##  [166] 0 0 1 1 1 1 1 0 1 1 0 1 0 0 0 0 1 1 0 1 1 0 0 0 0 0 1 1 0 0 0 1 1
+##  [199] 1 1 1 0 1 1 1 0 0 0 1 0 0 1 0 1 1 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 1
+##  [232] 0 1 1 1 1 0 0 0 1 1 0 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 0 1 0 1 1 1
+##  [265] 1 1 1 1 1 0 0 0 0 0 0 1 1 0 1 1 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 1 1
+##  [298] 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 1 1 0 1 0 1 1 1 0 0 1 0 0 1
+##  [331] 1 1 1 1 1 0 1 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0
+##  [364] 1 1 1 1 0 0 0 1 1 1 1 1 0 0 0 1 0 0 1 0 1 0 0 1 0 0 0 0 1 1 1 1 1
+##  [397] 1 1 0 1 1 1 1 1 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1 0 1 1 1 1 0 0 1 1
+##  [430] 0 1 1 1 1 0 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 1 1 0 0 1 0 0 0 1 1 1 1
+##  [463] 0 0 0 1 1 1 1 0 1 1 0 1 0 0 0 1 1 1 0 0 1 1 0 1 1 0 1 1 0 1 1 1 0
+##  [496] 0 0 1 0 1 0 1 1 1 1 1 0 1 0 1 0 1 0 0 0 0 1 1 0 1 0 0 0 1 1 0 0 0
+##  [529] 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 0 1 0 1 1 0 1 0 0 0 1 1 0 1 0 0 1
+##  [562] 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 1 0
+##  [595] 0 1 0 1 1 0 1 0 1 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 1 0
+##  [628] 1 1 0 0 0 1 1 1 0 1 1 0 1 1 1 0 0 1 1 0 1 0 0 1 1 0 0 0 1 1 1 0 0
+##  [661] 1 1 1 1 1 1 1 0 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 0 1 0 1 0 1
+##  [694] 0 0 1 1 0 0 0 1 1 0 0 0 0 1 0 0 1 1 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0
+##  [727] 1 1 1 0 1 1 1 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 1 1 1 1 1 1 1 0 1 1 1
+##  [760] 1 1 0 0 0 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0
+##  [793] 1 1 1 1 1 0 1 1 1 0 0 0 1 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 1 0 0 1 1
+##  [826] 1 0 0 0 0 0 1 1 1 0 0 1 1 0 0 1 0 0 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0
+##  [859] 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 0
+##  [892] 1 1 0 0 0 1 0 0 0 1 0 1 1 1 0 0 0 0 1 0 0 1 1 0 1 0 1 1 1 0 1 0 1
+##  [925] 0 1 1 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 1 1 0 1 1 1 0 1 0 0 0 0 1
+##  [958] 1 0 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 0 1 0 1 0 1 1 1 1 0 0 1 0 1 0 1
+##  [991] 1 1 0 1 0 0 1 1 0 0</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="example-binomial-mixture-model.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed - simulating the observed head/tail for individual flips based on the true probability of each coin to fall on Heads/tails</span></span>
 <span id="cb4-2"><a href="example-binomial-mixture-model.html#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> n, <span class="at">ncol =</span> m)</span>
 <span id="cb4-3"><a href="example-binomial-mixture-model.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
