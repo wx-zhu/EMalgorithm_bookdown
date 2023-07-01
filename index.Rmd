@@ -1,7 +1,7 @@
 --- 
 title: "EM Algorithm"
 author: "Wenxuan Zhu, Jingyi Guan, Sarah Tannert-Lerner"
-date: "Spring 2023, MATH/STAT 455, Macalester College"
+date: "Spring 2023, Mathematical Statistics, Macalester College"
 site: bookdown::bookdown_site
 ---
 
