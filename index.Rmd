@@ -14,3 +14,7 @@ knitr::include_graphics("image/pic7.png")
 ```
 
 
+![Creative Commons License](image/License.png){width=100px}  
+
+This online book of notes is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
